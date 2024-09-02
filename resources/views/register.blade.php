@@ -35,8 +35,21 @@
                 <input type="email" name="email" placeholder="Email" required="">
                 <a href="#">Forget your Password?</a>
                 <button>Sign In</button>
-                
             </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-left">
+                    <h1>WELCOME TO <div>ATTENDANCE</div> <div>&</div> <div>TODO LIST</div></h1>
+                    <p>If you already have an account, please log in.</p>
+                    <button id="signIn">SIGN IN</button>
+                </div>
+                <div class="overlay-right">
+                    <h1>WELCOME TO <div>ATTENDANCE</div> <div>&</div> <div>TODO LIST</div></h1>
+                    <p>This is a website that used to fill in employee attendance and is used to list your daily tasks while working.</p>
+                    <button id="signUp">SIGN UP</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>
