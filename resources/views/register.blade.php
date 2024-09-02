@@ -29,12 +29,15 @@
                 <h1>Sign In</h1>
                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="social"><i class="fab fa-google-g"></i></a>
+                <a href="#" class="social"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 <p>or use your account</p>
                 <input type="text" name="txt" placeholder="Name" required="">
                 <input type="email" name="email" placeholder="Email" required="">
                 <a href="#">Forget your Password?</a>
                 <button>Sign In</button>
+                
             </form>
         </div>
     </div>
