@@ -27,8 +27,6 @@
         <div class="sign-in">
             <form action="#">
                 <h1>Sign In</h1>
-                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social"><i class="fab fa-google-g"></i></a>
                 <a href="#" class="social"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
