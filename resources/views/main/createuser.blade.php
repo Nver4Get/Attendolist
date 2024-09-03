@@ -46,7 +46,7 @@
     left: 0;
     width: 50%;
     z-index: 2;
-}.overlay-container {
+} .overlay-container {
     position: absolute;
     top: 0;
     left: 50%;
@@ -56,9 +56,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.overlay {
+} .overlay {
     background: #ff416c; /* Warna latar belakang */
     color: #fff;
     position: relative;
@@ -69,9 +67,7 @@
     width: 200%;
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
-}
-
-.overlay-panel {
+} .overlay-panel {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -81,28 +77,18 @@
     height: 100%;
     width: 50%;
     position: absolute;
-}
-
-.overlay-left {
+} .overlay-left {
     left: 0;
-}
-
-.overlay-right {
+} .overlay-right {
     right: 0;
     text-align: center;
-}
-
-.overlay-panel h1 {
+} .overlay-panel h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-}
-
-.overlay-panel p {
+} .overlay-panel p {
     font-size: 1.2rem;
     margin-bottom: 30px;
-}
-
-.overlay-panel button {
+} .overlay-panel button {
     padding: 12px 45px;
     font-size: 14px;
     background-color: transparent;
@@ -111,13 +97,9 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
-}
-
-.overlay-panel button:hover {
+} .overlay-panel button:hover {
     background-color: rgba(255, 255, 255, 0.2);
-}
-
- .overlay-right {
+} .overlay-right {
     right: 0;
     transform: translateX(-50%);
 } .overlay-left {
