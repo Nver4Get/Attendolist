@@ -4,9 +4,11 @@
     <div class="sign-up">
         <form action="#">
             <h1>Create Account</h1>
-            <a href="#" class="social"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
-            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
             <p>or use your email for registration</p>
             <input type="text" name="txt" placeholder="Name" required="">
             <input type="email" name="email" placeholder="Email" required="">
@@ -14,8 +16,6 @@
             <button>Sign Up</button>
         </form>
     </div>
-</div>
-<div class="container" id="main">
     <div class="sign-in">
         <form action="#">
             <h1>Sign In</h1>
@@ -37,10 +37,11 @@
                 <button id="signIn">SIGN IN</button>
             </div>
             <div class="overlay-right">
-                <h1>WELCOME TO <div>ATTENDANCE</div> <div>&</div> <div>TODO LIST</div></h1>
-                <p>This is a website that used to fill in employee attendance and is used to list your daily tasks while working.</p>
+                <h1>WELCOME TO <br>ATTENDANCE <br>& <br>TODO LIST</h1>
+                <p>This is used to fill in employee attendance <br> and is used to list your daily tasks while working.</p>
                 <button id="signUp">SIGN UP</button>
             </div>
         </div>
     </div>
 </div>
+
