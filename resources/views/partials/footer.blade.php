@@ -44,7 +44,7 @@
               <h6 class="text-uppercase fw-bold">Useful links</h6>
               <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
               <p><a href="/help" class="text-white">Help</a></p>
-              <p><a href="/support" class="text-white">Support</a></p>
+              <p><a href="/support" class="text-white">Game</a></p>
             </div>
 
             <!-- Grid column for Contact -->
@@ -52,8 +52,8 @@
               <h6 class="text-uppercase fw-bold">Contact</h6>
               <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
               <p><i class="fas fa-home mr-3"></i><a href="https://www.google.com/maps?q=Malang,%20ML%2012345,%20ID" target="_blank" style="text-decoration:none" class="text-white"> Malang, ML 12345, ID</a></p>
-              <p><i class="fas fa-envelope mr-3"></i><a href="mailto:funeraldiner6@gmail.com" class="text-white" style="text-decoration:none">Contact Me</a></p>
-              <p><i class="fas fa-envelope mr-3"></i><a href="mailto:Pmahardika260@gmail.com" class="text-white" style="text-decoration:none">Contact Admin</a></p>
+              <p><i class="fas fa-envelope mr-3"></i><a href="mailto:funeraldiner6@gmail.com" class="text-white" style="text-decoration:none"> Contact Me</a></p>
+              <p><i class="fas fa-envelope mr-3"></i><a href="mailto:Pmahardika260@gmail.com" class="text-white" style="text-decoration:none"> Contact Admin</a></p>
             </div>
           </div>
           <!-- Grid row -->
@@ -64,7 +64,7 @@
       <!-- Copyright -->
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
         © 2024 Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/">All Films Here</a>
+        <a class="text-white" href="https://mdbootstrap.com/">AttenDoList</a>
       </div>
       <!-- Copyright -->
     </footer>
