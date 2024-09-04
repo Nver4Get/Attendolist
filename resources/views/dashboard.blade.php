@@ -2,11 +2,11 @@
 @section('mainContent')
 <div class="container div-table">
   <div class="table-responsive">
-    <table class="table table-sm caption-top custom-table">
+    <table class="table table-sm caption-top custom-table table-info">
       <caption>Welcome to AttenDoList, please fill your attendence, tasks and don't forget to fill your progress tasks</caption>
       <caption>D/M/Y</caption>
       <thead>
-        <tr>
+        <tr class="">
           <th scope="col">Days</th>
           <th scope="col">Attendance</th>
           <th scope="col">Tasks</th>
@@ -28,9 +28,9 @@
         </tr>
         <tr>
           <th scope="row">Tuesday</th>
-          <td>+</td>
-          <td>+</td>
-          <td>+</td>
+          <td><a href=""></a></td>
+          <td><a href=""></a></td>
+          <td><a href=""></a></td>
         </tr>
         <tr>
           <th scope="row">Wednesday</th>
