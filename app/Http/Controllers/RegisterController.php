@@ -37,13 +37,12 @@ class RegisterController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255|',
-            'username' => 'required|max:255|unique:ursers',
+            'username' => 'required|max:255|unique:users',
             'email' => 'required|max:255|unique:users',
             "password" => 'required'
         ]);
-
         $this->registerServices->registerUser($request->all());
-        return redirect('/login')->with('success', 'Registration successfull! Please login');
+        return redirect('/register');
     }
 
     /**

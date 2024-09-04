@@ -2,7 +2,7 @@
 @section('login')
 <div class="container" id="main">
     <div class="sign-up">
-        <form action="/dashboard" method="post">
+        <form action="/register" method="post">
             @csrf
             <h1>Create Account</h1>
             <div class="social-container">
@@ -11,10 +11,10 @@
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <p>or use your email for registration</p>
-            <input type="text" name="txt" placeholder="Name" required="">
-            <input type="text" name="txt" placeholder="Username" required="">
-            <input type="email" name="email" placeholder="Email" required="">
-            <input type="password" name="pswd" placeholder="Password" required="">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
             <button>Sign Up</button>
         </form>
     </div>

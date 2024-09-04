@@ -17,5 +17,6 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 
-Route::get('/', [RegisterController::class, 'index']);
+Route::resource('/', RegisterController::class);
+Route::resource('/register', RegisterController::class);
 Route::get('/dashboard', [DashboardController::class, 'index']);
