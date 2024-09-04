@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="text/css" href="style.css">
     <link rel="stylesheet" href="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <script src="https://kit.fontawesome.com/f5cbc51cc6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/login.css">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
