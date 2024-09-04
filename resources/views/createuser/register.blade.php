@@ -12,6 +12,7 @@
             </div>
             <p>or use your email for registration</p>
             <input type="text" name="txt" placeholder="Name" required="">
+            <input type="text" name="txt" placeholder="Username" required="">
             <input type="email" name="email" placeholder="Email" required="">
             <input type="password" name="pswd" placeholder="Password" required="">
             <button>Sign Up</button>
