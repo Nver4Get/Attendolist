@@ -2,7 +2,8 @@
 @section('login')
 <div class="container" id="main">
     <div class="sign-up">
-        <form action="#">
+        <form action="/dashboard" method="post">
+            @csrf
             <h1>Create Account</h1>
             <div class="social-container">
                 <a href="#" class="social"><i class="fa-brands fa-facebook-f"></i></a>

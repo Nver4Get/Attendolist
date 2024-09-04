@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\RegisterServices;
+use App\Http\Controllers\Controller;
 
 class RegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    protected $registerServices;
+    public function __construct(RegisterServices $registerServices)
+    {
+        $this->registerServices = $registerServices;
+    }
+
     public function index()
     {
         return view('createuser.register');
@@ -27,7 +35,15 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255|',
+            'username' => 'required|max:255|unique:ursers',
+            'email' => 'required|max:255|unique:users',
+            "password" => 'required'
+        ]);
+
+        $this->registerServices->registerUser($request->all());
+        return redirect('/login')->with('success', 'Registration successfull! Please login');
     }
 
     /**
