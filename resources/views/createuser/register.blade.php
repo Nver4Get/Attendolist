@@ -2,8 +2,7 @@
 @section('login')
 <div class="container" id="main">
     <div class="sign-up">
-        <form action="/register" method="post">
-            @csrf
+        <form action="{{ route('register.store') }}" method="post">
             <h1>Create Account</h1>
             <div class="social-container">
                 <a href="#" class="social"><i class="fa-brands fa-facebook-f"></i></a>
@@ -11,15 +10,15 @@
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <p>or use your email for registration</p>
-            <input type="text" name="name" placeholder="Name" required>
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
+            <input type="text" name="name" placeholder="Name" required="">
+            <input type="text" name="username" placeholder="Username" required="">
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="password" placeholder="Password" required="">
             <button>Sign Up</button>
         </form>
     </div>
     <div class="sign-in">
-        <form action="#">
+        <form action="{{ route('login') }}" method="post">
             <h1>Sign In</h1>
             <a href="#" class="social"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
@@ -40,7 +39,7 @@
             </div>
             <div class="overlay-right">
                 <h1>WELCOME TO<br>ATTENDANCE<br>&<br>TODO LIST</h1>
-                <p>This is used to fill in employee attendance <br> and is used to list your daily tasks while working.</p>
+                <p>This is used to fill in employee attendance and used to list your daily tasks while working.</p>
                 <button id="signUp">SIGN UP</button>
             </div>
         </div>

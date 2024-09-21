@@ -16,7 +16,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-
-Route::resource('/', RegisterController::class);
-Route::resource('/register', RegisterController::class);
+Route::get('/', function() {
+    return view('welcome');
+});
+// Route::resource('/', RegisterController::class);
+// Route::resource('/register', RegisterController::class);
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 Route::get('/dashboard', [DashboardController::class, 'index']);
