@@ -12,9 +12,8 @@ class LoginController extends Controller
     // Menampilkan form login
     public function showLoginForm()
     {
-        return view('auth.login'); // pastikan view ini ada
+        return view('landingpage');
     }
-    // Handle request login (Metode login)
     public function login(Request $request)
     {
         // Validasi input login
@@ -22,21 +21,21 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        
+
         // Cek apakah user berhasil login
         if (Auth::attempt($credentials)) {
             // Jika login berhasil, redirect ke dashboard atau halaman tujuan
             $request->session()->regenerate();
             return redirect()->intended('/dashboard'); // Sesuaikan dengan route dashboard kamu
             }
-            
+
             // Jika login gagal, kembalikan ke halaman login dengan error
             throw ValidationException::withMessages([
                 'email' => __('auth.failed'), // Menampilkan pesan error jika autentikasi gagal
                 ]);
             }
             // Logout (Metode logout)
-            public function logout(Request $request) 
+            public function logout(Request $request)
             {
                 Auth::logout();
 
