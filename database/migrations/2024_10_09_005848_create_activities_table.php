@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contohs', function (Blueprint $table) {
+        Schema::create('activities', function (Blueprint $table) {
             $table->id();
+            $table->string('attendance');
+            $table->string('tasks');
+            $table->string('progress');
+            $table->foreignId('id_user')->constrained('users');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contohs');
+        Schema::dropIfExists('activities');
     }
 };
