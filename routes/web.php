@@ -17,7 +17,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/', function() {
-    return view('welcome');
+    return view('landingpage');
 });
 // Route::resource('/', RegisterController::class);
 // Route::resource('/register', RegisterController::class);
