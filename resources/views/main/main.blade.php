@@ -12,6 +12,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/style.css">
+    <!-- Script Font Awesome -->
+    <script src="https://kit.fontawesome.com/f5cbc51cc6.js" crossorigin="anonymous"></script>
     <title>Dashboard</title>
 </head> 
 <body>
