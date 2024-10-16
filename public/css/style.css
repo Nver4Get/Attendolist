@@ -8,10 +8,22 @@ body {
     overflow-x: hidden;
   }
 
-
 .custom-table {
     margin-top: 40px;
     margin-bottom: 80px;
+}
+
+.custom-table th, td {
+  padding: 10px;
+}
+
+.custom-table a {
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+  cursor: pointer;
 }
 
 caption {
