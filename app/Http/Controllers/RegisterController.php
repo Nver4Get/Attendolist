@@ -19,7 +19,7 @@ class RegisterController extends Controller
 
     public function index()
     {
-        return view('createuser.register');
+
     }
 
     /**
@@ -42,7 +42,7 @@ class RegisterController extends Controller
             "password" => 'required'
         ]);
         $this->registerServices->registerUser($request->all());
-        return redirect()->route('dashboard')->with('success', 'Registration successful!');
+        return redirect()->route('landingpage')->with('success', 'Registration successful!');
     }
 
     /**

@@ -2,7 +2,6 @@
 @section('mainContent')
 
 <style>
-    /* Custom CSS */
     .hero-section {
         background: url('https://source.unsplash.com/1600x900/?nature,water') no-repeat center center;
         background-size: cover;
@@ -12,6 +11,13 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+    }
+
+    .welcome {
+        background: -webkit-linear-gradient(#430ffd, #454242);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     }
 
     .hero-section h1 {
@@ -37,14 +43,11 @@
 
 <body>
 
-<!-- Navbar -->
-
-<!-- Hero Section -->
 <section class="hero-section">
     <div class="container">
-        <h1 class="text-dark">Welcome to AttenDoList</h1>
+        <h1 class="welcome">Welcome to AttenDoList</h1>
         <p class="text-dark">This is where Attendence filling and tasks progress can be monitored</p>
-        <a href="#features" class="btn btn-primary btn-lg">Learn More</a>
+        <a href="#features" class="btn btn-primary btn-lg">About</a>
     </div>
 </section>
 
@@ -83,11 +86,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('register') }}" method="POST">
+                <form action="{{ route('register.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="name" class="form-label">Full Name</label>
+                        <label for="name" class="form-label">Name</label>
                         <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
@@ -114,18 +121,18 @@
         <div class="row text-center">
             <div class="col-md-4">
                 <i class="bi bi-globe" style="font-size: 2rem;"></i>
-                <h3>Global Reach</h3>
-                <p>We connect people and businesses worldwide.</p>
+                <h3> <a href="">Quiz</a></h3>
+                <p>Add your knowledge</p>
             </div>
             <div class="col-md-4">
                 <i class="bi bi-lightning" style="font-size: 2rem;"></i>
-                <h3>Fast & Reliable</h3>
-                <p>Enjoy fast and reliable services 24/7.</p>
+                <h3><a href="">Community</a></h3>
+                <p>Make your own Community</p>
             </div>
             <div class="col-md-4">
                 <i class="bi bi-shield" style="font-size: 2rem;"></i>
-                <h3>Secure & Trusted</h3>
-                <p>Your security and privacy are our top priority.</p>
+                <h3><a href="">Mini Game</a></h3>
+                <p>Having fun with  mini game</p>
             </div>
         </div>
     </div>
@@ -134,54 +141,51 @@
 <!-- Pricing Section -->
 <section id="pricing" class="bg-light py-5">
     <div class="container text-center">
-        <h2>Pricing Plans</h2>
-        <p>Choose a plan that fits your needs.</p>
+        <h2>Support</h2>
+        <p>Choose your budget to support us.</p>
         <div class="row">
             <div class="col-md-4">
                 <div class="card mb-4">
                     <div class="card-header">
-                        <h4>Basic</h4>
+                        <h4>Regular</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title">$5</h1>
+                        <ul class="list-unstyled">
+                            <li>5 Dollars</li>
+                            <li>For Snacks</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Donate</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>Rich</h4>
                     </div>
                     <div class="card-body">
                         <h1 class="card-title">$9.99</h1>
                         <ul class="list-unstyled">
-                            <li>5 Projects</li>
-                            <li>10GB Storage</li>
-                            <li>Email Support</li>
+                            <li>9.99 Dollars</li>
+                            <li>For Coffee</li>
                         </ul>
-                        <a href="#" class="btn btn-primary">Get Started</a>
+                        <a href="#" class="btn btn-primary">Donate</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card mb-4">
                     <div class="card-header">
-                        <h4>Standard</h4>
+                        <h4>Crazy Rich</h4>
                     </div>
                     <div class="card-body">
                         <h1 class="card-title">$19.99</h1>
                         <ul class="list-unstyled">
-                            <li>10 Projects</li>
-                            <li>50GB Storage</li>
-                            <li>Priority Support</li>
+                            <li>19.99 Dollars</li>
+                            <li>For Charty</li>
                         </ul>
-                        <a href="#" class="btn btn-primary">Get Started</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h4>Premium</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title">$29.99</h1>
-                        <ul class="list-unstyled">
-                            <li>Unlimited Projects</li>
-                            <li>100GB Storage</li>
-                            <li>24/7 Support</li>
-                        </ul>
-                        <a href="#" class="btn btn-primary">Get Started</a>
+                        <a href="#" class="btn btn-primary">Donate</a>
                     </div>
                 </div>
             </div>
@@ -213,8 +217,7 @@
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
-        <p>&copy; 2024 MyWebsite. All rights reserved.</p>
+        <p>&copy; 2024 AttenDoList. All rights reserved.</p>
     </div>
 </footer>
-
 @endsection
