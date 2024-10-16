@@ -9,11 +9,6 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    // Menampilkan form login
-    public function showLoginForm()
-    {
-        return view('landingpageees');
-    }
     public function login(Request $request)
     {
         // Validasi input login

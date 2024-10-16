@@ -42,7 +42,7 @@ class RegisterController extends Controller
             "password" => 'required'
         ]);
         $this->registerServices->registerUser($request->all());
-        return redirect()->route('landingpage')->with('success', 'Registration successful!');
+        return redirect()->route('landingpage')->with('success', 'Registration successful!, please login first');
     }
 
     /**
