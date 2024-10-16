@@ -1,8 +1,11 @@
 @extends('main.main')
 @section('mainContent')
+<?php
+    $sunday_filled = true;
+?>
     <div class="container div-table">
         <div class="table-responsive">
-            <table class="table table-sm caption-top custom-table table-info">
+            <table class="table table-sm caption-top custom-table">
                 <caption>Welcome to AttenDoList, please fill your attendence, tasks and don't forget to fill your progress
                     tasks</caption>
                 <caption>D/M/Y</caption>
@@ -17,45 +20,49 @@
                 <tbody>
                     <tr>
                         <th scope="row">Sunday</th>
-                        <td>✅</td>
-                        <td>Designing Poster</td>
-                        <td>50%</td>
+                        <td>
+                            <a href="#">
+                                <i class="fa-solid fa-plus" <?php if (!$sunday_filled) echo 'style="pointer-events: none; opacity: 0.5;"'; ?>></i>
+                            </a>
+                        </td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
                     </tr>
                     <tr>
                         <th scope="row">Monday</th>
-                        <td>❌</td>
-                        <td>-</td>
-                        <td>-</td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
                     </tr>
-                    <tr>
+                    <tr class="tuesday">
                         <th scope="row">Tuesday</th>
-                        <td><a href=""></a></td>
-                        <td><a href=""></a></td>
-                        <td><a href=""></a></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
                     </tr>
                     <tr>
                         <th scope="row">Wednesday</th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
                     </tr>
                     <tr>
                         <th scope="row">Thursday</th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
                     </tr>
                     <tr>
                         <th scope="row">Friday</th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
                     </tr>
                     <tr>
                         <th scope="row">Saturday</th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
                     </tr>
                 </tbody>
             </table>
