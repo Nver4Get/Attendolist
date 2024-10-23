@@ -25,39 +25,63 @@
                     <tr>
                         <th scope="row">Sunday</th>
                         <td>
-                            <a href="#">
-                                <i class="fa-solid fa-plus" <?php if (!$sunday_filled) {
-                                    echo 'style="pointer-events: none; opacity: 0.5;"';
-                                } ?>></i>
-                            </a>
+                            <a data-bs-toggle="modal" data-bs-target="#attendanceModal" href="#"><i class="fa-solid fa-plus"></i></a>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">Monday</th>
-                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a data-bs-toggle="modal" data-bs-target="#attendanceModal" href="#"><i class="fa-solid fa-plus"></i></a></td>
                     </tr>
                     <tr class="tuesday">
                         <th scope="row">Tuesday</th>
-                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a data-bs-toggle="modal" data-bs-target="#attendanceModal" href="#"><i class="fa-solid fa-plus"></i></a></td>
                     </tr>
                     <tr>
                         <th scope="row">Wednesday</th>
-                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a data-bs-toggle="modal" data-bs-target="#attendanceModal" href="#"><i class="fa-solid fa-plus"></i></a></td>
                     </tr>
                     <tr>
                         <th scope="row">Thursday</th>
-                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a data-bs-toggle="modal" data-bs-target="#attendanceModal" href="#"><i class="fa-solid fa-plus"></i></a></td>
                     </tr>
                     <tr>
                         <th scope="row">Friday</th>
-                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a data-bs-toggle="modal" data-bs-target="#attendanceModal" href="#"><i class="fa-solid fa-plus"></i></a></td>
                     </tr>
                     <tr>
                         <th scope="row">Saturday</th>
-                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td><a data-bs-toggle="modal" data-bs-target="#attendanceModal" href="#"><i class="fa-solid fa-plus"></i></a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+
+    <!-- Attendance Modal -->
+    <div class="modal fade" id="attendanceModal" tabindex="-1" aria-labelledby="attendanceModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="attendaceModalLabel">Attendance and To Do List</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="attendancelog" class="form-label">Attendance</label>
+                                <select class="form-select" id="attendanceSelect" name="attendance" required>
+                                    <option value="1"><i class="fa-solid fa-square-check"></i> Present</option>
+                                    <option value="0"><i class="fa-solid fa-square-xmark"></i> Not Present</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                Please fill the attendance first!
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 @endsection
