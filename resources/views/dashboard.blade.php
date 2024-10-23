@@ -5,10 +5,9 @@
 ?>
     <div class="container div-table">
         <div class="table-responsive">
+            <caption>Welcome to AttenDoList, please fill your attendence, tasks and don't forget to fill your progress tasks</caption>
+            <caption>D/M/Y</caption>
             <table class="table table-sm caption-top custom-table">
-                <caption>Welcome to AttenDoList, please fill your attendence, tasks and don't forget to fill your progress
-                    tasks</caption>
-                <caption>D/M/Y</caption>
                 <thead>
                     <tr class="">
                         <th scope="col">Days</th>
