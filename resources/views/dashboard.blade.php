@@ -11,8 +11,6 @@
             </div>
         </div>
         <div class="table-responsive">
-            <caption>Welcome to AttenDoList, please fill your attendence, tasks and don't forget to fill your progress tasks</caption>
-            <caption>D/M/Y</caption>
             <table class="table table-sm caption-top custom-table">
             <table class="table table-sm caption-top custom-table" border="1">
                 <thead>
