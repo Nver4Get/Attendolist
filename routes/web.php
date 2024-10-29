@@ -22,6 +22,6 @@ Route::get('/', [LandingpageController::class, 'index'])->name('landingpage');
 // Route::resource('/', RegisterController::class);
 // Route::resource('/register', RegisterController::class);
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store')->middleware('guest');
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::resource('/dashboard', DashboardController::class);
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

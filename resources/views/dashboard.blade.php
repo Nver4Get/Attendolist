@@ -84,8 +84,8 @@
                             <label for="attendanceSelect" class="form-label">Attendance</label>
                             <select class="form-select" id="attendanceSelect" name="attendance" required>
                                 <option value="" disabled selected>Select Attendance</option>
-                                <option value="1">Present</option>
-                                <option value="0">Not Present</option>
+                                <option value="YES">Present</option>
+                                <option value="NO">Not Present</option>
                             </select>
                         </div>
                         <div id="attendanceMessage" class="mb-3">
@@ -97,7 +97,7 @@
                             <label for="task" class="form-label">Task</label>
                             <div class="input-group mb-3" id="taskInputContainer">
                                 <input type="text" class="form-control" id="task" name="task[]"
-                                    placeholder="Enter your task">
+                                    placeholder="Enter your task" required>
                                 <button type="button" class="btn btn-outline-secondary" id="addTaskButton">+</button>
                             </div>
 

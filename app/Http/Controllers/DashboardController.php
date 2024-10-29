@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -27,7 +28,18 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData =  $request->validate([
+            'attendance' =>  'required',
+            'task' =>  'required|array',
+            'reason' => 'required',
+            'proof' => 'required|mimes:png,jpg,jpeg'
+        ]);
+
+        $validatedData['task'] = implode(', ', $validatedData['task']);
+        $validatedData['proof'] = $request->file('proof')->store('proofs');
+
+        Activity::create($validatedData);
+        return redirect()->back()->with('success', 'Activity recorded successfully');
     }
 
     /**
