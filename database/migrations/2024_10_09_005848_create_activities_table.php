@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->boolean('attendance');
-            $table->string('tasks');
-            $table->string('progress');
             $table->foreignId('id_user')->constrained('users');
+            $table->boolean('attendance');
+            $table->string('tasks')->nullable();
+            $table->string('progress')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
