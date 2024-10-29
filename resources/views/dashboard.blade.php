@@ -1,8 +1,5 @@
 @extends('main.dashboard')
 @section('mainContent')
-    {{-- <?php
-    // $sunday_filled = true;
-    ?> --}}
     <div class="container div-table">
         <div class="container mt-5 text-center" style="max-width: 750px;">
             <div class="welcome-message">
@@ -29,30 +26,44 @@
                         <td>
                             <a data-bs-toggle="modal" class="plus-button" data-day="0" data-bs-target="#attendanceModal" href="#"><i class="fa-solid fa-plus"></i></a>
                         </td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <th scope="row">Monday</th>
                         <td><a data-bs-toggle="modal" class="plus-button" data-day="1" data-bs-target="#attendanceModal" href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <th scope="row">Tuesday</th>
                         <td><a data-bs-toggle="modal" class="plus-button" data-day="2" data-bs-target="#attendanceModal" href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <th scope="row">Wednesday</th>
                         <td><a data-bs-toggle="modal" class="plus-button" data-day="3" data-bs-target="#attendanceModal" href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <th scope="row">Thursday</th>
                         <td><a data-bs-toggle="modal" class="plus-button" data-day="4" data-bs-target="#attendanceModal" href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <th scope="row">Friday</th>
                         <td><a data-bs-toggle="modal" class="plus-button" data-day="5" data-bs-target="#attendanceModal" href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <th scope="row">Saturday</th>
                         <td><a data-bs-toggle="modal" class="plus-button" data-day="6" data-bs-target="#attendanceModal" href="#"><i class="fa-solid fa-plus"></i></a></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
@@ -89,6 +100,7 @@
                                     placeholder="Enter your task">
                                 <button type="button" class="btn btn-outline-secondary" id="addTaskButton">+</button>
                             </div>
+
                         </div>
                         <!-- Form tambahan untuk alasan ketidakhadiran -->
                         <div id="reasonForm" class="mb-3" style="display: none;">

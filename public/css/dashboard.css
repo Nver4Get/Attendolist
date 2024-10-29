@@ -12,10 +12,22 @@ body {
   caption-side: top;
   caption-side: top;
   margin-top: 5px;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.custom-table th, td {
+.custom-table th, .custom-table td {
   padding: 10px;
+  text-align: center;
+  /* border: 1px solid #ececec; */
+}
+
+.custom-table th {
+  background-color: #f5f5f5;
+}
+
+.custom-table td {
+  vertical-align: middle;
 }
 
 .custom-table a {
