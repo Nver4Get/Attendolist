@@ -84,8 +84,8 @@
                             <label for="attendanceSelect" class="form-label">Attendance</label>
                             <select class="form-select" id="attendanceSelect" name="attendance" required>
                                 <option value="" disabled selected>Select Attendance</option>
-                                <option value="YES">Present</option>
-                                <option value="NO">Not Present</option>
+                                <option value="1">Present</option>
+                                <option value="0">Not Present</option>
                             </select>
                         </div>
                         <div id="attendanceMessage" class="mb-3">
@@ -105,10 +105,10 @@
                         <!-- Form tambahan untuk alasan ketidakhadiran -->
                         <div id="reasonForm" class="mb-3" style="display: none;">
                             <label for="reason" class="form-label">Reason for absence</label>
-                            <textarea class="form-control" id="reason" name="reason" placeholder="Enter your reason for not attending"></textarea>
+                            <textarea class="form-control" id="reason" required name="reason" placeholder="Enter your reason for not attending"></textarea>
                             <br>
                             <label for="reason" class="form-label">Proof</label>
-                            <input class="form-control" id="reason" type="file" name="proof"></input>
+                            <input class="form-control" id="reason" required type="file" name="proof"></input>
                         </div>
 
 

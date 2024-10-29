@@ -28,8 +28,8 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData =  $request->validate([
-            'attendance' =>  'required',
+        $validatedData = $request->validate([
+            'attendance' => 'required',
             'task' =>  'required|array',
             'reason' => 'required',
             'proof' => 'required|mimes:png,jpg,jpeg'
