@@ -78,6 +78,9 @@
                             <div class="mb-3">
                                 Please fill the attendance first!
                             </div>
+
+                            <!-- Task list form, initially hidden -->
+                             <div id=""></div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
