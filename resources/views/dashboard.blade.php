@@ -97,7 +97,7 @@
                             <label for="task" class="form-label">Task</label>
                             <div class="input-group mb-3" id="taskInputContainer">
                                 <input type="text" class="form-control" id="task" name="task[]"
-                                    placeholder="Enter your task">
+                                    placeholder="Enter your task" required>
                                 <button type="button" class="btn btn-outline-secondary" id="addTaskButton">+</button>
                             </div>
 
@@ -105,10 +105,10 @@
                         <!-- Form tambahan untuk alasan ketidakhadiran -->
                         <div id="reasonForm" class="mb-3" style="display: none;">
                             <label for="reason" class="form-label">Reason for absence</label>
-                            <textarea class="form-control" id="reason" name="reason" placeholder="Enter your reason for not attending"></textarea>
+                            <textarea class="form-control" id="reason" required name="reason" placeholder="Enter your reason for not attending"></textarea>
                             <br>
                             <label for="reason" class="form-label">Proof</label>
-                            <input class="form-control" id="reason" type="file" name="proof"></input>
+                            <input class="form-control" id="reason" required type="file" name="proof"></input>
                         </div>
 
 

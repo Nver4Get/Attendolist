@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('attendance');
             $table->string('tasks')->nullable();
             $table->string('progress')->nullable();
+            $table->string('reason')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });
