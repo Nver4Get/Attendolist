@@ -1,74 +1,36 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    overflow-x: hidden;
-  }
-
-.custom-table {
-  caption-side: top;
-  margin-top: 5px;
-}
-
-.custom-table th, td {
-  padding: 10px;
-}
-
-.custom-table a {
-  text-decoration: none;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: black;
-  cursor: pointer;
-}
-
-caption {
+.hero-section {
+    background: url('https://source.unsplash.com/1600x900/?nature,water') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
-.footer-img {
-    transition: margin-left 0.3s ease; /* Smooth transition for margin change */
-  }
+.welcome {
+    background: -webkit-linear-gradient(#0f3bfd, #d9cccc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 
-  /* Small screens (phones, up to 767px) */
-  @media screen and (max-width: 767px) {
-    .footer-img {
-      margin-left: 0; /* No margin adjustment on small screens */
-    }
-  }
+.hero-section h1 {
+    font-size: 4rem;
+}
 
-  /* Medium screens (tablets, 768px and up) */
-  @media screen and (min-width: 768px) {
-    .footer-img {
-      margin-left: 0; /* Adjust margin for medium screens */
-    }
-  }
+.hero-section p {
+    font-size: 1.5rem;
+}
 
-  /* Large screens (desktops, 992px and up) */
-  @media screen and (min-width: 992px) {
-    .footer-img {
-      margin-left: 0; /* Adjust margin for large screens */
-    }
-  }
+.features-section {
+    padding: 50px 0;
+}
 
-  /* Extra large screens (large desktops, 1200px and up) */
-  @media screen and (min-width: 1200px) {
-    .footer-img {
-      margin-left: 0; /* Further adjust margin for extra large screens */
-    }
-  }
-
-  @media screen and (max-width: 540px) {
-    .footer-img {
-      margin: 0 auto; /* Center image horizontally */
-      display: block; /* Ensure block-level display for centering */
-      order: -1; /* Move image above text */
-    }
-    .text-md-start {
-        text-align: center; /* Center-align text for smaller screens */
-      }
-    }
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+}

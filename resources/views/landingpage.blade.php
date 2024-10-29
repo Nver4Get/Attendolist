@@ -1,42 +1,7 @@
 @extends('main.main')
 @section('mainContent')
     <style>
-        .hero-section {
-            background: url('https://source.unsplash.com/1600x900/?nature,water') no-repeat center center;
-            background-size: cover;
-            height: 100vh;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .welcome {
-            background: -webkit-linear-gradient(#0f3bfd, #d9cccc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        }
-
-        .hero-section h1 {
-            font-size: 4rem;
-        }
-
-        .hero-section p {
-            font-size: 1.5rem;
-        }
-
-        .features-section {
-            padding: 50px 0;
-        }
-
-        .footer {
-            background-color: #333;
-            color: white;
-            padding: 30px 0;
-            text-align: center;
-        }
+        
     </style>
     </head>
 
