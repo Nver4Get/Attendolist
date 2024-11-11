@@ -3,11 +3,15 @@
     <div class="container div-table">
         <div class="container mt-5 text-center" style="max-width: 750px;">
             <div class="welcome-message">
+<<<<<<< Updated upstream
                 <caption class="h4 animated-text">Welcome to AttenDoList, please fill your attendance, tasks and don't forget
                     to fill your progress tasks.</caption>
             </div>
             <div class="dmy mt-3">
                 <caption class="h5 mt-3">{{ \Carbon\Carbon::now()->format('d/m/Y') }}</caption>
+=======
+                <marquee class="h4 animated-text">Welcome to AttenDoList! Please fill your attendance, tasks and don't forget to fill your progress tasks.</marquee>
+>>>>>>> Stashed changes
             </div>
         </div>
         <br>

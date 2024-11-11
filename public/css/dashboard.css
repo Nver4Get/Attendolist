@@ -85,3 +85,8 @@ caption {
         text-align: center; /* Center-align text for smaller screens */
       }
     }
+
+    footer {
+      margin-top: 30px;
+      text-align: center;
+    }

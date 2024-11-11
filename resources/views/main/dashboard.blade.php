@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="icon" href="{{ asset('img/atl.jpg') }}">
     <link rel="stylesheet" href="/css/dashboard.css">
     <!-- Script Font Awesome -->
     <script src="https://kit.fontawesome.com/f5cbc51cc6.js" crossorigin="anonymous"></script>
@@ -31,5 +31,11 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 </body>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AttenDoList. All rights reserved.</p>
+        </div>
+    </footer>
 
 </html>

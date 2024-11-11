@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <img src="img/atl.jpg" class="rounded-circle float-start me-3 img-fluid" width="95px" height="95px"
             alt="...">
-        <a class="navbar-brand" href="#">AttenDoList</a>
+        <a class="navbar-brand" href="/dashboard">AttenDoList</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -14,7 +14,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Quiz</a>
+                        <a class="nav-link" href="/games">Quiz</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" aria-disabled="true">Settings</a>
@@ -23,7 +23,7 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">Action</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
                             <li><a class="dropdown-item" href="#">Community</a></li>
                             <li>
                                 <hr class="dropdown-divider">
