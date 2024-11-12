@@ -13,7 +13,7 @@ class ActivitiesController extends Controller
      */
     public function index()
     {
-        $activities = Activity::where('id_user', Auth::id())->get();
+        $activities = Activity::all();
         return view('dashboard', [
             'activities' => $activities,
         ]);
@@ -41,13 +41,19 @@ class ActivitiesController extends Controller
         $tasks = $request->input('tasks', []);
         $totalTasks = 10;
         $filledTasks = count($tasks);
-        $progress = ($filledTasks / $totalTasks) * 100;
+        if ($request->input('attendance')) {
+            $progress = ($filledTasks / $totalTasks) * 100;
+            $symbol = '<i class="fa-solid fa-square-check"></i>';
+        } else {
+            $progress = '-';
+            $symbol = '<i class="fa-solid fa-rectangle-xmark"></i>';
+        }
 
         $activity = new Activity();
         $activity->attendance = $request->input('attendance');
         $activity->tasks = json_encode($tasks);
         $activity->progress = $progress;
-        $activity->id_user = Auth::id();
+        $activity->symbol = $symbol;    
         $activity->save();
 
         return redirect()->route('dashboard')->with('success', 'Activity saved successfully!');
