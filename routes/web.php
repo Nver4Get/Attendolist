@@ -28,6 +28,6 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 Route::resource('dashboard', DashboardController::class);
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/games', [GamesController::class, 'index'])->name('games');
+Route::get('/games', [GamesController::class, 'index']);
 Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
 Route::get('/settings', [SettingsController::class, 'index'])->name('settings');

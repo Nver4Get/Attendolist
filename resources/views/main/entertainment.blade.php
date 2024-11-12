@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
         }
+
         .game-options {
             text-align: center;
             color: white;
@@ -37,22 +39,23 @@
         }
 
         .games {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 40px;
-            padding: 0 40px;
         }
 
-        .games1, .games2, .games3, .games4 {
+        .games1,
+        .games2,
+        .games3,
+        .games4 {
             border: 2px solid white;
-            max-width: 400px;
+            widows: 600px;
+            height: 600px
         }
 
-        .games2 {
+        /* .games2 {
             max-height: 200px;
-        }
+        } */
 
         .games a {
             flex: 1 1 calc(50% - 40px);
@@ -63,9 +66,12 @@
         }
 
         .games img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
+            padding: 10px;
+            /* Menambahkan jarak di sekitar setiap gambar */
+            width: 300px;
+            height: 300px;
+            box-sizing: border-box;
+            /* Agar padding tidak menambah ukuran gambar */
         }
 
         .game a:hover {
@@ -74,9 +80,11 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         @yield('mainContent')
     </div>
 </body>
+
 </html>
