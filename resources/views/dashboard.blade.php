@@ -331,159 +331,132 @@
                 </div>
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-            // Kode untuk menyembunyikan tombol plus
-            document.addEventListener('DOMContentLoaded', function() {
-                // Kode untuk menyembunyikan tombol plus sesuai hari
-                var plusButtons = document.querySelectorAll('.plus-button');
-                var today = new Date().getDay(); // 0 (Sunday) to 6 (Saturday)
+    document.addEventListener('DOMContentLoaded', function() {
+        const plusButtons = document.querySelectorAll('.plus-button');
+        const today = new Date().getDay();
 
-                plusButtons.forEach(function(button) {
-                    const buttonDay = parseInt(button.getAttribute('data-day'));
+        // Menampilkan tombol plus hanya pada hari saat ini
+        plusButtons.forEach(function(button) {
+            const buttonDay = parseInt(button.getAttribute('data-day'));
+            if (buttonDay !== today) {
+                button.style.display = 'none';
+            } else {
+                button.style.display = 'inline-block';
+            }
+        });
+    });
 
-                    if (buttonDay !== today) {
-                        button.style.display = 'none';
-                    } else {
-                        button.style.display =
-                        'inline-block'; // Make sure to display the button if it’s the correct day
-                    }
-                });
-            });
+    const taskForm = document.getElementById('taskForm');
+    const addTaskButton = document.getElementById('addTaskButton');
+    const attendanceMessage = document.getElementById('attendanceMessage');
+    const reasonForm = document.getElementById('reasonForm');
+    const attendanceSelect = document.getElementById('attendanceSelect');
+    const submitButton = document.getElementById('submitButton');
 
-            // Ambil elemen-elemen yang diperlukan
-            const taskForm = document.getElementById('taskForm');
-            const addTaskButton = document.getElementById('addTaskButton');
-            const attendanceMessage = document.getElementById('attendanceMessage');
-            const reasonForm = document.getElementById('reasonForm');
-            const attendanceSelect = document.getElementById('attendanceSelect');
+    // Fungsi untuk menambahkan tugas baru
+    addTaskButton.addEventListener('click', function() {
+        const newTaskGroup = document.createElement('div');
+        newTaskGroup.className = 'input-group mb-3';
 
-            // Event listener untuk tombol tambah task
-            addTaskButton.addEventListener('click', function() {
-                const newTaskGroup = document.createElement('div');
-                newTaskGroup.className = 'input-group mb-3';
+        const newTaskInput = createInput('text', 'form-control', 'task[]', 'Enter your task');
+        const newProgressInput = createInput('text', 'form-control', 'progress[]', 'Enter progress for this task', true);
+        const removeTaskButton = document.createElement('button');
+        removeTaskButton.type = 'button';
+        removeTaskButton.className = 'btn btn-outline-danger';
+        removeTaskButton.textContent = '-';
 
-                // Input untuk Task
-                const newTaskInput = document.createElement('input');
-                newTaskInput.type = 'text';
-                newTaskInput.className = 'form-control';
-                newTaskInput.name = 'tasks[]';
-                newTaskInput.placeholder = 'Enter your task';
+        removeTaskButton.addEventListener('click', () => newTaskGroup.remove());
 
-                // Input untuk Progress per Task
-                const newProgressInput = document.createElement('input');
-                newProgressInput.type = 'text';
-                newProgressInput.className = 'form-control';
-                newProgressInput.name = 'progress[]';
-                newProgressInput.placeholder = 'Enter progress for this task';
-                newProgressInput.disabled = true;
+        newTaskGroup.append(newTaskInput, newProgressInput, removeTaskButton);
+        taskForm.appendChild(newTaskGroup);
+    });
 
-                // Tombol hapus task dan progress
-                const removeTaskButton = document.createElement('button');
-                removeTaskButton.type = 'button';
-                removeTaskButton.className = 'btn btn-outline-danger';
-                removeTaskButton.textContent = '-';
+    function createInput(type, className, name, placeholder, disabled = false) {
+        const input = document.createElement('input');
+        input.type = type;
+        input.className = className;
+        input.name = name;
+        input.placeholder = placeholder;
+        if (disabled) input.disabled = true;
+        return input;
+    }
 
-                removeTaskButton.addEventListener('click', function() {
-                    newTaskGroup.remove();
-                });
+    // Pengaturan tampilan berdasarkan status kehadiran
+    attendanceSelect.addEventListener('change', function() {
+        if (attendanceSelect.value === "1") {
+            attendanceMessage.style.display = 'none';
+            taskForm.style.display = 'block';
+            reasonForm.style.display = 'none';
+            submitButton.style.display = 'block';
+        } else if (attendanceSelect.value === "0") {
+            attendanceMessage.style.display = 'none';
+            taskForm.style.display = 'none';
+            reasonForm.style.display = 'block';
+            submitButton.style.display = 'block';
+        } else {
+            attendanceMessage.style.display = 'block';
+            taskForm.style.display = 'none';
+            reasonForm.style.display = 'none';
+            submitButton.style.display = 'none';
+        }
+    });
 
-                // Tambahkan elemen task, progress, dan tombol hapus ke grup baru
-                newTaskGroup.appendChild(newTaskInput);
-                newTaskGroup.appendChild(newProgressInput);
-                newTaskGroup.appendChild(removeTaskButton);
+    // Fungsi untuk memperbarui ikon tombol kehadiran dan progres pada tabel
+    function updateAttendanceButton(status) {
+        const plusButtons = document.querySelectorAll('.plus-button');
+        const taskRows = document.querySelectorAll('.task-row');
+        
+        plusButtons.forEach(button => {
+            button.innerHTML = '';
 
-                // Sisipkan grup baru ke dalam taskForm sebelum progressInput
-                taskForm.appendChild(newTaskGroup);
-            });
+            const icon = document.createElement('i');
+            icon.className = status === "present" ? 'fa-solid fa-check text-success' : 'fa-solid fa-minus text-danger';
+            button.appendChild(icon);
+            
+            // Tambahkan tombol edit jika hadir
+            if (status === "present" && !button.querySelector('.edit-btn')) {
+                const updateButton = document.createElement('button');
+                updateButton.className = 'btn btn-primary btn-sm ms-2 edit-btn';
+                updateButton.textContent = 'Edit';
+                button.parentNode.insertBefore(updateButton, button.nextSibling);
 
-            // Event listener untuk dropdown kehadiran
-            attendanceSelect.addEventListener('change', function() {
-                if (attendanceSelect.value === "1") {
-                    attendanceMessage.style.display = 'none';
-                    taskForm.style.display = 'block';
-                    reasonForm.style.display = 'none';
-                } else if (attendanceSelect.value === "0") {
-                    attendanceMessage.style.display = 'none';
-                    taskForm.style.display = 'none';
-                    reasonForm.style.display = 'block';
-                } else {
-                    attendanceMessage.style.display = 'block';
-                    taskForm.style.display = 'none';
-                    reasonForm.style.display = 'none';
-                }
-            });
-
-            // Fungsi untuk mengubah tampilan tombol setelah kehadiran dikonfirmasi
-            function updateAttendanceButton(status) {
-                const plusButtons = document.querySelectorAll('.plus-button');
-                const taskRows = document.querySelectorAll('.task-row');
-                plusButtons.forEach(function(button) {
-                    button.innerHTML = ''; // Kosongkan isi tombol
-
-                    if (status === "present") {
-                        // Saat kehadiran adalah present
-                        const checkMark = document.createElement('span');
-                        checkMark.className = 'fa-solid fa-check text-success'; // Centang hijau
-                        button.appendChild(checkMark); // Tambahkan centang
-
-                        // Buat tombol update di sebelah centang
-                        const updateButton = document.createElement('button');
-                        updateButton.className = 'btn btn-primary btn-sm ms-2';
-                        updateButton.textContent = 'Edit';
-                        button.parentNode.insertBefore(updateButton, button.nextSibling);
-
-                        // Event listener untuk tombol update
-                        updateButton.addEventListener('click', function() {
-                            alert("Update task clicked!");
-                        });
-
-                    } else if (status === "not_present") {
-                        // Saat kehadiran adalah not present
-                        const minusSign = document.createElement('span');
-                        minusSign.className = 'fa-solid fa-minus text-danger'; // Minus merah
-                        button.appendChild(minusSign); // Tambahkan tanda minus
-                    }
-                });
-
-                taskRows.forEach(function(row) {
-                    const progressColumn = row.querySelector('.progress-column');
-                    const taskInput = row.querySelector('.task-input');
-                    if (status === "present") {
-                        progressColumn.innerHTML = '<span class="fa-solid fa-check text-success"></span>';
-                    } else if (status === "not_present") {
-                        progressColumn.innerHTML = '<span class="fa-solid fa-minus text-danger"></span>';
-                    }
+                updateButton.addEventListener('click', () => {
+                    alert("Update task clicked!");
                 });
             }
+        });
 
-            // Fungsi untuk mengupdate status input progress berdasarkan waktu
-            function updateProgressInput() {
-                const progressInputs = document.querySelectorAll('input[name="progress[]"]');
-                const now = new Date();
-                const currentHour = now.getHours();
-                const currentMinute = now.getMinutes();
+        // Ubah kolom progres pada tabel
+        taskRows.forEach(function(row) {
+            const progressColumn = row.querySelector('.progress-column');
+            progressColumn.innerHTML = status === "present" ?
+                '<span class="fa-solid fa-check text-success"></span>' :
+                '<span class="fa-solid fa-minus text-danger"></span>';
+        });
+    }
 
-                if (currentHour >= 17) {
-                    progressInputs.forEach((progressInput) => {
-                        progressInput.disabled = false;
-                    });
-                } else {
-                    progressInputs.forEach((progressInput) => {
-                        progressInput.disabled = true;
-                    });
-                }
-            }
+    // Update input progres
+    function updateProgressInput() {
+        const progressInputs = document.querySelectorAll('input[name="progress[]"]');
+        const currentHour = new Date().getHours();
 
-            // Event listener untuk submit form kehadiran
-            document.getElementById('submitAttendance').addEventListener('click', function() {
-                const status = attendanceSelect.value === "1" ? "present" : "not_present";
-                updateAttendanceButton(status);
-                document.getElementById('attendanceModal').style.display = 'none';
-            });
+        progressInputs.forEach(progressInput => {
+            progressInput.disabled = currentHour < 17;
+        });
+    }
 
-            // Jalankan fungsi saat halaman dimuat dan perbarui setiap menit
-            document.addEventListener('DOMContentLoaded', updateProgressInput);
-            setInterval(updateProgressInput, 60000);
-        </script>
+    // Pengaturan tombol submit kehadiran
+    document.getElementById('submitAttendance').addEventListener('click', function() {
+        const status = attendanceSelect.value === "1" ? "present" : "not_present";
+        updateAttendanceButton(status);
+        document.getElementById('attendanceModal').style.display = 'none';
+    });
+
+    document.addEventListener('DOMContentLoaded', updateProgressInput);
+    setInterval(updateProgressInput, 60000);
+</script>
+
 
     @endsection
