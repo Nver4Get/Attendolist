@@ -1,11 +1,10 @@
 @extends('main.dashboard')
 @section('mainContent')
-    <div class="container div-table">
+    <div class="div-table">
         <div class="container mt-5 text-center" style="max-width: 750px;">
-
             <div class="dmy mt-3">
-                <marquee class="h4 animated-text">Welcome to AttenDoList! Please fill your attendance, tasks and don't forget to fill your progress tasks.</marquee>
-                <caption class="h5 mt-3">{{ \Carbon\Carbon::now()->format('d/m/Y') }}</caption>
+                <marquee class="h4">Welcome to AttenDoList! Please fill your attendance, tasks and don't forget to fill your progress tasks.</marquee>
+                <p class="date h5 mt-3">{{ \Carbon\Carbon::now()->format('d/m/Y') }}</p>
             </div>
         </div>
         <br>
@@ -407,14 +406,14 @@
     function updateAttendanceButton(status) {
         const plusButtons = document.querySelectorAll('.plus-button');
         const taskRows = document.querySelectorAll('.task-row');
-        
+
         plusButtons.forEach(button => {
             button.innerHTML = '';
 
             const icon = document.createElement('i');
             icon.className = status === "present" ? 'fa-solid fa-check text-success' : 'fa-solid fa-minus text-danger';
             button.appendChild(icon);
-            
+
             // Tambahkan tombol edit jika hadir
             if (status === "present" && !button.querySelector('.edit-btn')) {
                 const updateButton = document.createElement('button');
@@ -457,6 +456,4 @@
     document.addEventListener('DOMContentLoaded', updateProgressInput);
     setInterval(updateProgressInput, 60000);
 </script>
-
-
     @endsection

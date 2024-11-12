@@ -6,6 +6,7 @@
 
 body {
     overflow-x: hidden;
+    background: url('https://media.giphy.com/media/tNt8ZSSrwNHzQcPABV/giphy.gif?cid=ecf05e47q27wcsyrrgvx7upyjfx2corz0nc0henufb8h2e1k&ep=v1_gifs_related&rid=giphy.gif&ct=g ');
   }
 
 .custom-table {
@@ -39,8 +40,9 @@ body {
   cursor: pointer;
 }
 
-caption {
+.date {
     text-align: center;
+    font-weight: bold;
 }
 
 .footer-img {
@@ -86,7 +88,9 @@ caption {
       }
     }
 
-    footer {
-      margin-top: 30px;
-      text-align: center;
+    .footer {
+        color: rgb(0, 0, 0);
+        padding: 30px 0;
+        font-weight: bold;
+        text-align: center;
     }

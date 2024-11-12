@@ -35,7 +35,7 @@
         }
 
         .back-button:hover {
-            color: black;
+            color: rgb(219, 214, 214)
         }
 
         .games {

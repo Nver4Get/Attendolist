@@ -1,7 +1,7 @@
 @extends('main.main')
 @section('mainContent')
     <style>
-        
+
     </style>
     </head>
 
@@ -183,11 +183,4 @@
                 </form>
             </div>
         </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <p>&copy; 2024 AttenDoList. All rights reserved.</p>
-            </div>
-        </footer>
     @endsection

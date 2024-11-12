@@ -1,4 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+<style>
+    .navbar {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Atur nilai-nilai ini untuk ketebalan shadow */
+}
+
+li {
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+a {
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
         <img src="img/atl.jpg" class="rounded-circle float-start me-3 img-fluid" width="95px" height="95px"
             alt="...">
