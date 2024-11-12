@@ -12,21 +12,21 @@
         <div class="games">
             <div class="card-group">
                 <div class="card">
-                    <a href="https://skribbl.io/" target="_blank">
+                    <a href="https://skribbl.io/">
                         <img src="img/skribbl.jpg" alt="Skribbl.io" class="games1 img-fluid">
                     </a>
                 </div>
             </div>
             <div class="card-group">
                 <div class="card">
-                    <a href="#" target="_blank">
+                    <a href="/quiz">
                         <img src="img/quiz.jpg" alt="Quiz" class="games2 img-fluid">
                     </a>
                 </div>
             </div>
             <div class="card-group">
                 <div class="card">
-                    <a href="https://www.crazygames.com/game/words-of-wonders" target="_blank">
+                    <a href="https://www.crazygames.com/game/words-of-wonders">
                         <img src="img/wow.jpg" alt="Words of Wonder" class="games3 img-fluid">
                     </a>
                 </div>

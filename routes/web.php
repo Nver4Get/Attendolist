@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\GamesController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingpageController;
-use App\Http\Controllers\GamesController;
-use App\Http\Controllers\SettingsController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -30,4 +31,4 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/games', [GamesController::class, 'index']);
 Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
-Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+Route::get('/quiz', [QuizController::class, 'index'])->name('quiz');
