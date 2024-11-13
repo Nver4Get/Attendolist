@@ -405,8 +405,12 @@
     // Fungsi untuk memperbarui ikon tombol kehadiran dan progres pada tabel
     function updateAttendanceButton(status) {
         const plusButtons = document.querySelectorAll('.plus-button');
+<<<<<<< Updated upstream
         const taskRows = document.querySelectorAll('.task-row');
 
+=======
+        
+>>>>>>> Stashed changes
         plusButtons.forEach(button => {
             button.innerHTML = '';
 
@@ -428,7 +432,8 @@
         });
 
         // Ubah kolom progres pada tabel
-        taskRows.forEach(function(row) {
+        const taskRows = document.querySelectorAll('.task-row');
+        taskRows.forEach(row => {
             const progressColumn = row.querySelector('.progress-column');
             progressColumn.innerHTML = status === "present" ?
                 '<span class="fa-solid fa-check text-success"></span>' :
