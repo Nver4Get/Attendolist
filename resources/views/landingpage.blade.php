@@ -15,7 +15,7 @@
         <section class="hero-section">
             <div class="container">
                 <h1 class="welcome">Welcome to AttenDoList</h1>
-                <p class="text-dark">This is where Attendence filling and tasks progress can be monitored</p>
+                <p class="text-light">This is where Attendence filling and tasks progress can be monitored</p>
                 <a href="#features" class="btn btn-primary btn-lg">About</a>
             </div>
         </section>
@@ -109,7 +109,7 @@
         </section>
 
         <!-- Pricing Section -->
-        <section id="pricing" class="bg-light py-5">
+        <section id="pricing" class="bg-light py-5 donation">
             <div class="container text-center">
                 <h2>Support</h2>
                 <p>Choose your budget to support us.</p>
@@ -163,7 +163,7 @@
             </div>
         </section>
 
-        <section id="contact" class="py-5">
+        <section id="contact" class="py-5 contact">
             <div class="container text-center">
                 <h2>Contact Us</h2>
                 <p>Have any questions? We'd love to hear from you.</p>
