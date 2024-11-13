@@ -21,11 +21,52 @@
 </head>
 
 <body>
-
     @include('partials.navbar')
     <div class="container">
         @yield('mainContent')
     </div>
+    <div id="particles-js"></div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80
+                },
+                "size": {
+                    "value": 2
+                },
+                "color": {
+                    "value": "#ffa500"
+                },
+                "move": {
+                    "speed": 0.6
+                }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    }
+                }
+            }
+        });
+    </script>
+
+    <style>
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            /* Agar background berada di belakang konten utama */
+            background-color: #ff9900;
+        }
+    </style>
+
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 AttenDoList. All rights reserved.</p>
@@ -33,7 +74,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 </body>
 

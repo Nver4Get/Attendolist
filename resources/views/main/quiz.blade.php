@@ -12,9 +12,16 @@
 
 <body>
     <style>
+        body, html {
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            font-family: Verdana, Geneva, Tahoma, sans-serif
+        }
+
         body {
-            background-color: rgb(5, 10, 66);
-            color: white;
+            background: linear-gradient(270deg, #ff758c, #ff7eb3, #84fab0, #8fd3f4);
+            background-size: 600% 600%;
+            animation: gradientBG 10s ease infinite;
         }
 
         button {
@@ -52,72 +59,32 @@
         }
 
         .goodluck {
-            background: -webkit-linear-gradient(#ffffff, #9f9c9c);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            background: -webkit-linear-gradient(#000000, #525151);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
 
         .arrow-back:hover {
             color: rgb(219, 214, 214);
         }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
     </style>
-
-    <div class="container" id="particles-js"></div>
 
     <div class="content-overlay">
         @yield('quiz')
     </div>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
     <script>
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 50
-                },
-                "size": {
-                    "value": 3
-                },
-                "move": {
-                    "speed": 1
-                }
-            },
-            "interactivity": {
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "repulse"
-                    }
-                }
-            }
+        particlesJS.load('particles-js', '/path/to/particles.json', function() {
+          console.log('particles.js loaded - callback');
         });
-    </script>
-
-    <style>
-        /* Agar particles-js menutupi seluruh layar */
-        #particles-js {
-            position: absolute;
-            top: 0;
-            right: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Overlay content untuk @yield('quiz')
-
-        */ .content-overlay {
-            position: relative;
-            color: white;
-            /* Sesuaikan dengan warna konten */
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
-
-
-
+      </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
