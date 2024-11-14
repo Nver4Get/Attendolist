@@ -10,6 +10,11 @@
         <div class="desc mb-5">
             <p>This is a multiple choice quiz that can increase your knowledge, so it doesn't matter if you are studying or have already studied.</p>
         </div>
+        @if (session('score') !== null)
+        <div class="alert alert-success mt-3">
+            Your Score: {{ session('score') }}/{{ $quizzes->count() }}
+        </div>
+    @endif
         <div class="logo">
             <i class="fa-solid fa-circle-user profile-icon"></i>
         </div>
@@ -17,7 +22,7 @@
             <h4>{{ $user->name }}</h4>
         </div>
         <div class="btn-start mb-5">
-            <a href="{{ route('quiz') }}">
+            <a href="/questions">
                 <button class="btn-me">Start Quiz</button>
             </a>
         </div>

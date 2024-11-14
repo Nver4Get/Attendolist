@@ -20,6 +20,7 @@ class DashboardController extends Controller
         $today = Carbon::today();
 
         $activities = Activity::whereDate('created_at', $today)->get();
+        
 
         return view('dashboard', compact('activities', 'today'));
     }

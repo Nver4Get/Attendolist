@@ -15,6 +15,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="{{ asset('img/atl.jpg') }}">
     <link rel="stylesheet" href="/css/dashboard.css">
+    <script src="{{ asset('js/attendance.js') }}" defer></script>
     <!-- Script Font Awesome -->
     <script src="https://kit.fontawesome.com/f5cbc51cc6.js" crossorigin="anonymous"></script>
     <title>Dashboard</title>

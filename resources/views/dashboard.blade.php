@@ -3,7 +3,8 @@
     <div class="div-table">
         <div class="container mt-5 text-center" style="max-width: 750px;">
             <div class="dmy mt-3">
-                <marquee class="h4">Welcome to AttenDoList! Please fill your attendance, tasks and don't forget to fill your progress tasks.</marquee>
+                <marquee class="h4">Welcome to AttenDoList! Please fill your attendance, tasks and don't forget to fill
+                    your progress tasks.</marquee>
                 <p class="date h5 mt-3">{{ \Carbon\Carbon::now()->format('d/m/Y') }}</p>
             </div>
         </div>
@@ -20,20 +21,31 @@
                 <tbody>
                     <tr>
                         <th scope="row">Sunday</th>
-                        <td>
-                            <a data-bs-toggle="modal" class="plus-button" data-day="0" data-bs-target="#attendanceModal"
-                                href="#" onclick="UpdateAttendanceModal(this)">
-                                <i class="fa-solid fa-plus"></i>
-                            </a>
+                        <td id="attendance-status">
+                            @if ($today->isSunday())
+                                @if ($activities->isEmpty() || $activities->first()->attendance === null)
+                                    <!-- Jika attendance belum ada, tampilkan ikon plus -->
+                                    <a data-bs-toggle="modal" class="plus-button" data-day="0" data-bs-target="#attendanceModal" href="#">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                @else
+                                    <!-- Tampilkan status attendance sesuai nilai di database -->
+                                    @if ($activities->first()->attendance === 1)
+                                        <span class="attendance-status" data-attendance="present">Present</span>
+                                        <button class="btn btn-sm btn-secondary" onclick="openUpdateModal()">Update</button>
+                                    @else
+                                        <span class="attendance-status" data-attendance="not_present">Not Present</span>
+                                    @endif
+                                @endif
+                            @endif
                         </td>
                         <td colspan="2">
                             @if ($today->isSunday())
                                 <div class="accordion" id="accordionExample">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingSunday">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseSunday"
-                                                aria-expanded="false" aria-controls="collapseSunday">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapseSunday" aria-expanded="false" aria-controls="collapseSunday">
                                                 Show Tasks and Progress
                                             </button>
                                         </h2>
@@ -55,13 +67,26 @@
                             @endif
                         </td>
                     </tr>
+                    {{-- dst --}}
                     <tr>
                         <th scope="row">Monday</th>
-                        <td>
-                            <a data-bs-toggle="modal" class="plus-button" data-day="1" data-bs-target="#attendanceModal"
-                                href="#" onclick="UpdateAttendanceModal(this)">
-                                <i class="fa-solid fa-plus"></i>
-                            </a>
+                        <td id="attendance-status">
+                            @if ($today->isMonday())
+                                @if ($activities->isEmpty() || $activities->first()->attendance === null)
+                                    <!-- Jika attendance belum ada, tampilkan ikon plus -->
+                                    <a data-bs-toggle="modal" class="plus-button" data-day="1" data-bs-target="#attendanceModal" href="#">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                @else
+                                    <!-- Tampilkan status attendance sesuai nilai di database -->
+                                    @if ($activities->first()->attendance === 1)
+                                        <span class="attendance-status" data-attendance="present">Present</span>
+                                        <button class="btn btn-sm btn-secondary" onclick="openUpdateModal()">Update</button>
+                                    @else
+                                        <span class="attendance-status" data-attendance="not_present">Not Present</span>
+                                    @endif
+                                @endif
+                            @endif
                         </td>
                         <td colspan="2">
                             @if ($today->isMonday())
@@ -94,11 +119,23 @@
                     </tr>
                     <tr>
                         <th scope="row">Tuesday</th>
-                        <td>
-                            <a data-bs-toggle="modal" class="plus-button" data-day="2" data-bs-target="#attendanceModal"
-                                href="#" onclick="UpdateAttendanceModal(this)">
-                                <i class="fa-solid fa-plus"></i>
-                            </a>
+                        <td id="attendance-status">
+                            @if ($today->isTuesday())
+                                @if ($activities->isEmpty() || $activities->first()->attendance === null)
+                                    <!-- Jika attendance belum ada, tampilkan ikon plus -->
+                                    <a data-bs-toggle="modal" class="plus-button" data-day="2" data-bs-target="#attendanceModal" href="#">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                @else
+                                    <!-- Tampilkan status attendance sesuai nilai di database -->
+                                    @if ($activities->first()->attendance === 1)
+                                        <span class="attendance-status" data-attendance="present">Present</span>
+                                        <button class="btn btn-sm btn-secondary" onclick="openUpdateModal()">Update</button>
+                                    @else
+                                        <span class="attendance-status" data-attendance="not_present">Not Present</span>
+                                    @endif
+                                @endif
+                            @endif
                         </td>
                         <td colspan="2">
                             @if ($today->isTuesday())
@@ -131,11 +168,23 @@
                     </tr>
                     <tr>
                         <th scope="row">Wednesday</th>
-                        <td>
-                            <a data-bs-toggle="modal" class="plus-button" data-day="3" data-bs-target="#attendanceModal"
-                                href="#" onclick="UpdateAttendanceModal(this)">
-                                <i class="fa-solid fa-plus"></i>
-                            </a>
+                        <td id="attendance-status">
+                            @if ($today->isWednesday())
+                                @if ($activities->isEmpty() || $activities->first()->attendance === null)
+                                    <!-- Jika attendance belum ada, tampilkan ikon plus -->
+                                    <a data-bs-toggle="modal" class="plus-button" data-day="3" data-bs-target="#attendanceModal" href="#">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                @else
+                                    <!-- Tampilkan status attendance sesuai nilai di database -->
+                                    @if ($activities->first()->attendance === 1)
+                                        <span class="attendance-status" data-attendance="present">Present</span>
+                                        <button class="btn btn-sm btn-secondary" onclick="openUpdateModal()">Update</button>
+                                    @else
+                                        <span class="attendance-status" data-attendance="not_present">Not Present</span>
+                                    @endif
+                                @endif
+                            @endif
                         </td>
                         <td colspan="2">
                             @if ($today->isWednesday())
@@ -168,11 +217,23 @@
                     </tr>
                     <tr>
                         <th scope="row">Thursday</th>
-                        <td>
-                            <a data-bs-toggle="modal" class="plus-button" data-day="4"
-                                data-bs-target="#attendanceModal" href="#" onclick="UpdateAttendanceModal(this)">
-                                <i class="fa-solid fa-plus"></i>
-                            </a>
+                        <td id="attendance-status">
+                            @if ($today->isThursday())
+                                @if ($activities->isEmpty() || $activities->first()->attendance === null)
+                                    <!-- Jika attendance belum ada, tampilkan ikon plus -->
+                                    <a data-bs-toggle="modal" class="plus-button" data-day="4" data-bs-target="#attendanceModal" href="#">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                @else
+                                    <!-- Tampilkan status attendance sesuai nilai di database -->
+                                    @if ($activities->first()->attendance === 1)
+                                        <span class="attendance-status" data-attendance="present">Present</span>
+                                        <button class="btn btn-sm btn-secondary" onclick="openUpdateModal()">Update</button>
+                                    @else
+                                        <span class="attendance-status" data-attendance="not_present">Not Present</span>
+                                    @endif
+                                @endif
+                            @endif
                         </td>
                         <td colspan="2">
                             @if ($today->isThursday())
@@ -205,11 +266,23 @@
                     </tr>
                     <tr>
                         <th scope="row">Friday</th>
-                        <td>
-                            <a data-bs-toggle="modal" class="plus-button" data-day="5"
-                                data-bs-target="#attendanceModal" href="#" onclick="UpdateAttendanceModal(this)">
-                                <i class="fa-solid fa-plus"></i>
-                            </a>
+                        <td id="attendance-status">
+                            @if ($today->isFriday())
+                                @if ($activities->isEmpty() || $activities->first()->attendance === null)
+                                    <!-- Jika attendance belum ada, tampilkan ikon plus -->
+                                    <a data-bs-toggle="modal" class="plus-button" data-day="5" data-bs-target="#attendanceModal" href="#">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                @else
+                                    <!-- Tampilkan status attendance sesuai nilai di database -->
+                                    @if ($activities->first()->attendance === 1)
+                                        <span class="attendance-status" data-attendance="present">Present</span>
+                                        <button class="btn btn-sm btn-secondary" onclick="openUpdateModal()">Update</button>
+                                    @else
+                                        <span class="attendance-status" data-attendance="not_present">Not Present</span>
+                                    @endif
+                                @endif
+                            @endif
                         </td>
                         <td colspan="2">
                             @if ($today->isFriday())
@@ -242,11 +315,23 @@
                     </tr>
                     <tr>
                         <th scope="row">Saturday</th>
-                        <td>
-                            <a data-bs-toggle="modal" class="plus-button" data-day="6"
-                                data-bs-target="#attendanceModal" href="#" onclick="UpdateAttendanceModal(this)">
-                                <i class="fa-solid fa-plus"></i>
-                            </a>
+                        <td id="attendance-status">
+                            @if ($today->isSaturday())
+                                @if ($activities->isEmpty() || $activities->first()->attendance === null)
+                                    <!-- Jika attendance belum ada, tampilkan ikon plus -->
+                                    <a data-bs-toggle="modal" class="plus-button" data-day="6" data-bs-target="#attendanceModal" href="#">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </a>
+                                @else
+                                    <!-- Tampilkan status attendance sesuai nilai di database -->
+                                    @if ($activities->first()->attendance === 1)
+                                        <span class="attendance-status" data-attendance="present">Present</span>
+                                        <button class="btn btn-sm btn-secondary" onclick="openUpdateModal()">Update</button>
+                                    @else
+                                        <span class="attendance-status" data-attendance="not_present">Not Present</span>
+                                    @endif
+                                @endif
+                            @endif
                         </td>
                         <td colspan="2">
                             @if ($today->isSaturday())
@@ -290,7 +375,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="#" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('dashboard.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="attendanceSelect" class="form-label">Attendance</label>
@@ -322,137 +407,14 @@
                                 <textarea class="form-control" id="reason" name="reason" placeholder="Enter your reason for not attending"></textarea>
                                 <br>
                                 <label for="reason" class="form-label">Proof</label>
-                                <input class="form-control" id="reason" type="file" name="proof"></input>
+                                <input class="form-control" id="proof" type="file" name="proof"></input>
                             </div>
-                            <button type="submit" class="btn btn-primary" id="submitButton" style="display: none;">Submit</button>
+                            <button type="submit" class="btn btn-primary" id="submitButton"
+                                style="display: none;">Submit</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const plusButtons = document.querySelectorAll('.plus-button');
-        const today = new Date().getDay();
-
-        // Menampilkan tombol plus hanya pada hari saat ini
-        plusButtons.forEach(function(button) {
-            const buttonDay = parseInt(button.getAttribute('data-day'));
-            if (buttonDay !== today) {
-                button.style.display = 'none';
-            } else {
-                button.style.display = 'inline-block';
-            }
-        });
-    });
-
-    const taskForm = document.getElementById('taskForm');
-    const addTaskButton = document.getElementById('addTaskButton');
-    const attendanceMessage = document.getElementById('attendanceMessage');
-    const reasonForm = document.getElementById('reasonForm');
-    const attendanceSelect = document.getElementById('attendanceSelect');
-    const submitButton = document.getElementById('submitButton');
-
-    // Fungsi untuk menambahkan tugas baru
-    addTaskButton.addEventListener('click', function() {
-        const newTaskGroup = document.createElement('div');
-        newTaskGroup.className = 'input-group mb-3';
-
-        const newTaskInput = createInput('text', 'form-control', 'task[]', 'Enter your task');
-        const newProgressInput = createInput('text', 'form-control', 'progress[]', 'Enter progress for this task', true);
-        const removeTaskButton = document.createElement('button');
-        removeTaskButton.type = 'button';
-        removeTaskButton.className = 'btn btn-outline-danger';
-        removeTaskButton.textContent = '-';
-
-        removeTaskButton.addEventListener('click', () => newTaskGroup.remove());
-
-        newTaskGroup.append(newTaskInput, newProgressInput, removeTaskButton);
-        taskForm.appendChild(newTaskGroup);
-    });
-
-    function createInput(type, className, name, placeholder, disabled = false) {
-        const input = document.createElement('input');
-        input.type = type;
-        input.className = className;
-        input.name = name;
-        input.placeholder = placeholder;
-        if (disabled) input.disabled = true;
-        return input;
-    }
-
-    // Pengaturan tampilan berdasarkan status kehadiran
-    attendanceSelect.addEventListener('change', function() {
-        if (attendanceSelect.value === "1") {
-            attendanceMessage.style.display = 'none';
-            taskForm.style.display = 'block';
-            reasonForm.style.display = 'none';
-            submitButton.style.display = 'block';
-        } else if (attendanceSelect.value === "0") {
-            attendanceMessage.style.display = 'none';
-            taskForm.style.display = 'none';
-            reasonForm.style.display = 'block';
-            submitButton.style.display = 'block';
-        } else {
-            attendanceMessage.style.display = 'block';
-            taskForm.style.display = 'none';
-            reasonForm.style.display = 'none';
-            submitButton.style.display = 'none';
-        }
-    });
-
-    // Fungsi untuk memperbarui ikon tombol kehadiran dan progres pada tabel
-    function updateAttendanceButton(status) {
-        const plusButtons = document.querySelectorAll('.plus-button');
-        plusButtons.forEach(button => {
-            button.innerHTML = '';
-
-            const icon = document.createElement('i');
-            icon.className = status === "present" ? 'fa-solid fa-check text-success' : 'fa-solid fa-minus text-danger';
-            button.appendChild(icon);
-
-            // Tambahkan tombol edit jika hadir
-            if (status === "present" && !button.querySelector('.edit-btn')) {
-                const updateButton = document.createElement('button');
-                updateButton.className = 'btn btn-primary btn-sm ms-2 edit-btn';
-                updateButton.textContent = 'Edit';
-                button.parentNode.insertBefore(updateButton, button.nextSibling);
-
-                updateButton.addEventListener('click', () => {
-                    alert("Update task clicked!");
-                });
-            }
-        });
-
-        // Ubah kolom progres pada tabel
-        const taskRows = document.querySelectorAll('.task-row');
-        taskRows.forEach(row => {
-            const progressColumn = row.querySelector('.progress-column');
-            progressColumn.innerHTML = status === "present" ?
-                '<span class="fa-solid fa-check text-success"></span>' :
-                '<span class="fa-solid fa-minus text-danger"></span>';
-        });
-    }
-
-    // Update input progres
-    function updateProgressInput() {
-        const progressInputs = document.querySelectorAll('input[name="progress[]"]');
-        const currentHour = new Date().getHours();
-
-        progressInputs.forEach(progressInput => {
-            progressInput.disabled = currentHour < 17;
-        });
-    }
-
-    // Pengaturan tombol submit kehadiran
-    document.getElementById('submitAttendance').addEventListener('click', function() {
-        const status = attendanceSelect.value === "1" ? "present" : "not_present";
-        updateAttendanceButton(status);
-        document.getElementById('attendanceModal').style.display = 'none';
-    });
-
-    document.addEventListener('DOMContentLoaded', updateProgressInput);
-    setInterval(updateProgressInput, 60000);
-</script>
+        {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
     @endsection
