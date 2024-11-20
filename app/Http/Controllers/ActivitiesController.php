@@ -53,7 +53,7 @@ class ActivitiesController extends Controller
         $activity->attendance = $request->input('attendance');
         $activity->tasks = json_encode($tasks);
         $activity->progress = $progress;
-        $activity->symbol = $symbol;    
+        $activity->symbol = $symbol;
         $activity->save();
 
         return redirect()->route('dashboard')->with('success', 'Activity saved successfully!');

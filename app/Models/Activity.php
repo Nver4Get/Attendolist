@@ -2,11 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
+use App\Models\Task;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Activity extends Model
 {
     use HasFactory;
-    protected $fillable = ['attendance', 'tasks', 'progress', 'reason', 'proof'];
+    protected $fillable = ['attendance', 'reason', 'proof'];
+    protected $primaryKey = 'activity_id';
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'activity_id', 'activity_id');
+    }
 }

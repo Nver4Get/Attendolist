@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Console\View\Components\Task;
+use App\Models\Task;
 
 class DashboardController extends Controller
 {
@@ -19,11 +19,13 @@ class DashboardController extends Controller
     {
         $today = Carbon::today();
 
-        $activities = Activity::whereDate('created_at', $today)->get();
-        
+        $activities = Activity::with('tasks')->get();
 
-        return view('dashboard', compact('activities', 'today'));
+        $todayActivity = $activities->firstWhere('created_at', $today->toDateString());
+
+        return view('dashboard', compact('today', 'activities', 'todayActivity'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -38,41 +40,47 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
         // Validasi data yang diterima
         $request->validate([
             'attendance' => 'required|boolean',
-            'tasks.*' => 'nullable|string', // Validasi untuk setiap task
+            'tasks.*' => 'nullable|string', // Validasi setiap tugas
             'reason' => 'nullable|string',
-            'proof' => 'nullable|file|mimes:jpg,png,pdf', // Validasi file
+            'proof' => 'nullable|file|mimes:jpg,png,pdf',
         ]);
 
-        // Simpan data ke dalam database
-        $attendance = new Activity();
-        $attendance->attendance = $request->attendance;
+        // Simpan data ke dalam tabel activities
+        $activity = new Activity();
+        $activity->attendance = $request->attendance;
 
-        // Jika hadir, simpan tugas
         if ($request->attendance == 1) {
-            // Menyimpan tugas sebagai string tunggal jika hanya satu tugas
-            $attendance->tasks = is_array($request->tasks) ? implode(', ', $request->tasks) : $request->tasks;
+            // Jika hadir, simpan tugas
+            $activity->reason = null;
+            $activity->proof = null;
+        } else {
+            // Jika tidak hadir, simpan alasan dan bukti
+            $activity->reason = $request->reason;
 
-            $taskCount = is_array($request->tasks) ? count($request->tasks) : 1;
-            // $attendance->progress = $taskCount > 1 ? 100.00 * $taskCount / $taskCount : 100;
-        } else { // Jika tidak hadir, simpan alasan dan proof
-            $attendance->reason = $request->reason;
             if ($request->hasFile('proof')) {
-                $proofPath = $request->file('proof')->store('proofs', 'public'); // Simpan file bukti
-                $attendance->proof = $proofPath;
+                $proofPath = $request->file('proof')->store('proofs', 'public');
+                $activity->proof = $proofPath;
             }
-            $attendance->progress = 0;
         }
 
-        // Simpan data ke dalam database
-        $attendance->save();
+        $activity->save();
 
-        // Redirect atau return response
+        if ($request->attendance == 1 && is_array($request->tasks)) {
+            foreach ($request->tasks as $task) {
+                Task::create([
+                    'activity_id' => $activity->activity_id,
+                    'task' => $task,
+                    'progress' => 0,
+                ]);
+            }
+        }
+
         return redirect()->back()->with('success', 'Attendance recorded successfully!');
     }
+
 
     /**
      * Display the specified resource.
@@ -93,16 +101,48 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $activity_id)
     {
-        //
+        $activity = Activity::findOrFail($activity_id);
+
+        // Hapus task yang ditandai untuk dihapus
+        $deletedTaskIds = $request->input('deleted_tasks', []);
+        if (!empty($deletedTaskIds)) {
+            Task::whereIn('id', $deletedTaskIds)->delete();
+        }
+
+        // Update atau tambahkan task baru
+        $tasks = $request->input('tasks', []);
+        $progress = $request->input('progress', []);
+
+        foreach ($tasks as $index => $taskName) {
+            $taskProgress = $progress[$index] ?? null;
+
+            // Perbarui task yang sudah ada atau tambahkan yang baru
+            if (isset($activity->tasks[$index])) {
+                $task = $activity->tasks[$index];
+                $task->update(['task' => $taskName, 'progress' => $taskProgress]);
+            } else {
+                $activity->tasks()->create(['task' => $taskName, 'progress' => $taskProgress]);
+            }
+        }
+
+        return redirect()->route('dashboard.index')->with('success', 'Activity updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $task = Task::findOrFail($id);
+
+        try {
+            $task->delete();
+
+            return response()->json(['success' => true, 'message' => 'Task deleted successfully.']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Failed to delete task.']);
+        }
     }
 }

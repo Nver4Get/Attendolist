@@ -16,6 +16,7 @@
     <link rel="icon" href="{{ asset('img/atl.jpg') }}">
     <link rel="stylesheet" href="/css/dashboard.css">
     <script src="{{ asset('js/attendance.js') }}" defer></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Script Font Awesome -->
     <script src="https://kit.fontawesome.com/f5cbc51cc6.js" crossorigin="anonymous"></script>
     <title>Dashboard</title>
@@ -63,7 +64,6 @@
             top: 0;
             left: 0;
             z-index: -1;
-            /* Agar background berada di belakang konten utama */
             background-color: #ff9900;
         }
     </style>

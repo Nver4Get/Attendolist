@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         $schedule->command('fetch:quiz-data')->hourly();
+        $schedule->command('cache:clear')->weeklyOn(0, '00:00'); // Minggu pukul 00:00
     }
 
     /**
