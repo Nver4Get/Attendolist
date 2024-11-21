@@ -51,6 +51,8 @@ class DashboardController extends Controller
         // Simpan data ke dalam tabel activities
         $activity = new Activity();
         $activity->attendance = $request->attendance;
+        $activity->user_id = auth()->id();
+
 
         if ($request->attendance == 1) {
             // Jika hadir, simpan tugas

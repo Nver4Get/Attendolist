@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id('activity_id');
+            $table->unsignedBigInteger('user_id');
             $table->boolean('attendance')->nullable();
             $table->string('reason')->nullable();
             $table->string('proof')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

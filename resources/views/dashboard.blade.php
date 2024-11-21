@@ -216,8 +216,8 @@
                             // Filter activities yang sesuai dengan hari yang ingin Anda tampilkan (misalnya hari Rabu)
                             $targetDay = 3; // Misalnya 3 untuk hari Rabu (dayOfWeek: 0 = Sunday, 1 = Monday, ..., 6 = Saturday)
                             $targetActivity = $activities
-                                ->filter(function ($activity) use ($targetDay) {
-                                    return $activity->created_at->dayOfWeek === $targetDay;
+                                ->filter(function ($activity) {
+                                    return $activity->created_at->toDateString() === now()->toDateString();
                                 })
                                 ->first();
                         @endphp

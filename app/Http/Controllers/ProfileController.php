@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Activity;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -40,7 +43,12 @@ class ProfileController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        // Ambil aktivitas dan tugas terkait dengan pengguna
+        $activities = Activity::where('user_id', $id)->with('tasks')->get();
+
+        return view('history', compact('user', 'activities'));
     }
 
     /**
