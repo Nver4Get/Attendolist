@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -64,4 +65,10 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
+
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->command('quiz:clear-cache')->hourly();  // Jalankan setiap jam
+        $schedule->command('fetch:quiz-data --amount=50')->hourly();
+    }
 }

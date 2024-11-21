@@ -11,7 +11,7 @@ class QuestionController extends Controller
 {
     public function showQuiz()
     {
-        $quizzes = Quiz::all();  // Ambil semua quiz dari database
+        $quizzes = Quiz::inRandomOrder()->limit(10)->get();  // Ambil semua quiz dari database
 
     // Mengacak jawaban untuk setiap quiz
     foreach ($quizzes as $quiz) {

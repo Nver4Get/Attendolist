@@ -1,4 +1,5 @@
 @extends('main.questions')
+
 @section('questions')
 <div class="container mt-5">
     <h1 class="text-center mb-5">Select The Correct Answer</h1>

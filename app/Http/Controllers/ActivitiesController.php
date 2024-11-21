@@ -13,9 +13,15 @@ class ActivitiesController extends Controller
      */
     public function index()
     {
-        $activities = Activity::all();
+        $currentWeekNumber = now()->weekOfYear;
+        $activities = Activity::with('tasks')
+        ->where('week_number', $currentWeekNumber)
+        ->get();
+
+        $today = now();
         return view('dashboard', [
             'activities' => $activities,
+            'today' => $today,
         ]);
     }
 

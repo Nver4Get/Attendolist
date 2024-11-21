@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('attendance')->nullable();
             $table->string('reason')->nullable();
             $table->string('proof')->nullable();
+            $table->integer('week_number');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
