@@ -167,15 +167,16 @@
             <div class="container text-center">
                 <h2>Contact Us</h2>
                 <p>Have any questions? We'd love to hear from you.</p>
-                <form class="row g-3 justify-content-center">
+                <form class="row g-3 justify-content-center" action="{{ route('review.store') }}" method="post">
+                    @csrf
                     <div class="col-md-6">
-                        <input type="text" class="form-control" placeholder="Your Name">
+                        <input type="text" class="form-control" name="name" placeholder="Your Name">
                     </div>
                     <div class="col-md-6">
-                        <input type="email" class="form-control" placeholder="Your Email">
+                        <input type="email" class="form-control" name="email" placeholder="Your Email">
                     </div>
                     <div class="col-12">
-                        <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                        <textarea class="form-control" rows="5" name="message" placeholder="Your Message"></textarea>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Send Message</button>
