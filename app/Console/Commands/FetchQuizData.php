@@ -13,6 +13,11 @@ class FetchQuizData extends Command
 
     public function handle()
     {
+        // Hapus semua quiz yang ada
+        
+        Quiz::truncate();
+
+        // Fetch quiz terbaru dari API
         $response = Http::get('https://opentdb.com/api.php?amount=10');
         $data = $response->json();
 

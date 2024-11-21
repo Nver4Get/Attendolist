@@ -17,7 +17,7 @@ a {
     <div class="container-fluid">
         <img src="img/atl.jpg" class="rounded-circle float-start me-3 img-fluid" width="95px" height="95px"
             alt="...">
-        <a class="navbar-brand" href="/dashboard">AttenDoList</a>
+        <a class="navbar-brand" href="/">AttenDoList</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
