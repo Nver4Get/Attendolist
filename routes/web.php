@@ -7,9 +7,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingpageController;
+use App\Http\Controllers\ReviewController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -35,3 +35,5 @@ Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
 Route::get('/quiz', [QuizController::class, 'index'])->middleware('auth');;
 Route::get('/questions', [QuestionController::class, 'showQuiz'])->middleware('auth');;
 Route::post('/submit-quiz', [QuizController::class, 'submitQuiz']);
+Route::post('/reviews', [ReviewController::class, 'store'])->name('review.store');
+Route::get('/admin/reviews', [ReviewController::class, 'index'])->name('reviews.index')->middleware('auth');
