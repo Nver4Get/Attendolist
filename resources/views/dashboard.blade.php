@@ -32,110 +32,124 @@
                             6 => 'Saturday',
                         ];
 
-                        $today = Carbon::today(); 
-                        $todayIndex = $today->dayOfWeek;
-                        $currentWeekNumber = now()->weekOfYear
+                        $todayIndex = $today->dayOfWeek; // Hari saat ini (angka 0-6)
                     @endphp
 
-@foreach ($daysOfWeek as $index => $day)
-    <tr>
-        <th scope="row">{{ $day }}</th>
-        <td id="attendance-status">
-            {{-- Jika hari sudah berlalu --}}
-            @if ($index < $todayIndex)
-                @php
-                    // Cek aktivitas yang ada untuk hari ini
-                    $pastActivity = $activities
-                        ->filter(function ($activity) use ($index) {
-                            return $activity->created_at->dayOfWeek === $index;
-                        })
-                        ->first();
-                @endphp
+                    @foreach ($daysOfWeek as $index => $day)
+                        <tr>
+                            <th scope="row">{{ $day }}</th>
+                            <td id="attendance-status">
+                                {{-- Jika hari sudah berlalu --}}
+                                @if ($index < $todayIndex)
+                                    @php
+                                        // Cek aktivitas yang ada untuk hari ini
+                                        $pastActivity = $activities
+                                            ->filter(function ($activity) use ($index) {
+                                                return $activity->created_at->dayOfWeek === $index;
+                                            })
+                                            ->first();
+                                    @endphp
 
-                @if ($pastActivity && $pastActivity->attendance == 1)
-                    <span class="attendance-status" data-attendance="present">Present</span>
-                    {{-- Tombol Update hanya untuk hari ini --}}
-                    <button type="button" class="btn btn-warning updateButton" data-bs-toggle="modal"
-                        data-bs-target="#updateModal" data-activity-id="{{ $pastActivity->activity_id }}">
-                        Update Attendance
-                    </button>
-                @else
-                    <span class="attendance-status">Not Present</span>
-                @endif
-            @elseif ($index === $todayIndex)
-                @php
-                    // Cek apakah ada aktivitas hari ini
-                    $todayActivity = $activities
-                        ->filter(function ($activity) use ($today) {
-                            return $activity->created_at->isSameDay($today);
-                        })
-                        ->first();
-                @endphp
+                                    @if ($pastActivity && $pastActivity->attendance == 1)
+                                        <span class="attendance-status" data-attendance="present">Present</span>
+                                    @else
+                                        <span class="attendance-status">Not Present</span>
+                                    @endif
+                                    {{-- Hari saat ini --}}
+                                @elseif ($index === $todayIndex)
+                                    @php
+                                        // Cek apakah ada aktivitas hari ini
+                                        $todayActivity = $activities
+                                            ->filter(function ($activity) use ($today) {
+                                                return $activity->created_at->isSameDay($today);
+                                            })
+                                            ->first();
+                                    @endphp
 
-                @if ($todayActivity && $todayActivity->attendance == 1)
-                    <span class="attendance-status" data-attendance="present">Present</span>
-                    {{-- Tombol Update hanya untuk hari ini --}}
-                    <button type="button" class="btn btn-warning updateButton" data-bs-toggle="modal"
-                        data-bs-target="#updateModal" data-activity-id="{{ $todayActivity->activity_id }}">
-                        Update Attendance
-                    </button>
-                @else
-                    <span class="attendance-status">Not Present</span>
-                @endif
-            @else
-                <span class="attendance-status">Not Available</span>
-            @endif
-        </td>
-        <td colspan="2">
-            {{-- Dropdown untuk hari ini dan hari yang sudah berlalu --}}
-            @if ($index <= $todayIndex)
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading{{ $day }}">
-                            <button class="accordion-button collapsed" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#collapse{{ $day }}"
-                                aria-expanded="false" aria-controls="collapse{{ $day }}">
-                                Show Tasks and Progress
-                            </button>
-                        </h2>
-                        <div id="collapse{{ $day }}" class="accordion-collapse collapse"
-                            aria-labelledby="heading{{ $day }}" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                @php
-                                    $dayActivities = $activities->filter(function ($activity) use ($index) {
-                                        return $activity->created_at->dayOfWeek === $index;
-                                    });
-                                @endphp
-
-                                @if ($dayActivities->isNotEmpty())
-                                    @foreach ($dayActivities as $activity)
-                                        <div>
-                                            @if ($activity->tasks->isNotEmpty())
-                                                <ul>
-                                                    @foreach ($activity->tasks as $task)
-                                                        <li>{{ $task->task }} (Progress: {{ $task->progress }}%)</li>
-                                                    @endforeach
-                                                </ul>
-                                            @else
-                                                <div>No tasks available for this activity</div>
-                                            @endif
-                                        </div>
-                                    @endforeach
+                                    @if ($todayActivity && $todayActivity->attendance == 1)
+                                        <span class="attendance-status" data-attendance="present">Present</span>
+                                        {{-- Tombol Update hanya untuk hari ini --}}
+                                        <button type="button" class="btn btn-warning updateButton" data-bs-toggle="modal"
+                                            data-bs-target="#updateModal"
+                                            data-activity-id="{{ $todayActivity->activity_id }}">
+                                            Update Attendance
+                                        </button>
+                                    @else
+                                        <a data-bs-toggle="modal" class="plus-button" data-day="{{ $index }}"
+                                            data-bs-target="#attendanceModal" href="#">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </a>
+                                    @endif
+                                    {{-- Hari yang akan datang --}}
                                 @else
-                                    <div>No activities available for this day</div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @else
-                {{-- Hari mendatang --}}
-                <div>No tasks for {{ $day }}</div>
-            @endif
-        </td>
-    </tr>
-@endforeach
+                                    @php
+                                        // Cek aktivitas untuk hari yang akan datang
+                                        $futureActivity = $activities
+                                            ->filter(function ($activity) use ($index) {
+                                                return $activity->created_at->dayOfWeek === $index;
+                                            })
+                                            ->first();
+                                    @endphp
 
+                                    @if ($futureActivity && $futureActivity->attendance == 1)
+                                        <span class="attendance-status" data-attendance="present">Present</span>
+                                    @else
+                                    @endif
+                                @endif
+                            </td>
+                            <td colspan="2">
+                                {{-- Dropdown untuk hari ini dan hari yang sudah berlalu --}}
+                                @if ($index <= $todayIndex)
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="heading{{ $day }}">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapse{{ $day }}"
+                                                    aria-expanded="false" aria-controls="collapse{{ $day }}">
+                                                    Show Tasks and Progress
+                                                </button>
+                                            </h2>
+                                            <div id="collapse{{ $day }}" class="accordion-collapse collapse"
+                                                aria-labelledby="heading{{ $day }}"
+                                                data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    @php
+                                                        $dayActivities = $activities->filter(function ($activity) use (
+                                                            $index,
+                                                        ) {
+                                                            return $activity->created_at->dayOfWeek === $index;
+                                                        });
+                                                    @endphp
+
+                                                    @if ($dayActivities->isNotEmpty())
+                                                        @foreach ($dayActivities as $activity)
+                                                            <div>
+                                                                @if ($activity->tasks->isNotEmpty())
+                                                                    <ul>
+                                                                        @foreach ($activity->tasks as $task)
+                                                                            <li>{{ $task->task }} (Progress:
+                                                                                {{ $task->progress }}%)</li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                @else
+                                                                    <div>No tasks available for this activity</div>
+                                                                @endif
+                                                            </div>
+                                                        @endforeach
+                                                    @else
+                                                        <div>No activities available for this day</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @else
+                                    {{-- Hari mendatang --}}
+                                    <div>No tasks for {{ $day }}</div>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
