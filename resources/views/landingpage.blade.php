@@ -12,11 +12,18 @@
             </div>
         @endif
 
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
         <section class="hero-section">
             <div class="container">
                 <h1 class="welcome">Welcome to AttenDoList</h1>
                 <p class="text-light">This is where Attendence filling and tasks progress can be monitored</p>
-                <a href="#features" class="btn btn-primary btn-lg">About</a>
+                <a href="#about" class="btn btn-primary btn-lg">About</a>
             </div>
         </section>
 
@@ -86,24 +93,14 @@
         </div>
 
         <!-- Features Section -->
-        <section id="features" class="features-section">
+        <section id="about" class="features-section">
             <div class="container">
                 <div class="row text-center">
-                    <div class="col-md-4">
-                        <i class="bi bi-globe" style="font-size: 2rem;"></i>
-                        <h3> <a href="">Quiz</a></h3>
-                        <p>Add your knowledge</p>
-                    </div>
-                    <div class="col-md-4">
-                        <i class="bi bi-lightning" style="font-size: 2rem;"></i>
-                        <h3><a href="">Community</a></h3>
-                        <p>Make your own Community</p>
-                    </div>
-                    <div class="col-md-4">
-                        <i class="bi bi-shield" style="font-size: 2rem;"></i>
-                        <h3><a href="">Mini Game</a></h3>
-                        <p>Having fun with mini game</p>
-                    </div>
+                    <i class="bi bi-globe" style="font-size: 2rem;"></i>
+                    <h3> <a href="#">ABOUT US</a></h3>
+                    <p>
+                        AttenDoList is a website that is useful for making todo lists. In addition, it is also used to record reports on the results of tasks that have been completed. We also work with several Game Web Developers, where on this site you can play games that have been provided. So here you will not be bored because of assignments alone, because there are many mini games available
+                    </p>
                 </div>
             </div>
         </section>
@@ -111,51 +108,48 @@
         <!-- Pricing Section -->
         <section id="pricing" class="bg-light py-5 donation">
             <div class="container text-center">
-                <h2>Support</h2>
-                <p>Choose your budget to support us.</p>
+                <h2>Our Features</h2>
+                <p>Try our features for free</p>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <div class="card-header">
-                                <h4>Regular</h4>
+                                <h4>Quiz</h4>
                             </div>
                             <div class="card-body">
-                                <h1 class="card-title">$5</h1>
                                 <ul class="list-unstyled">
-                                    <li>5 Dollars</li>
-                                    <li>For Snacks</li>
+                                    <img src="img/quiz.jpg" alt="quiz" style="width: 150px; height: 150px;">
                                 </ul>
-                                <a href="#" class="btn btn-primary">Donate</a>
+                                <a href="/quiz" class="btn btn-primary">Click Here</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <div class="card-header">
-                                <h4>Rich</h4>
+                                <h4>Add Task & Report</h4>
                             </div>
                             <div class="card-body">
-                                <h1 class="card-title">$9.99</h1>
                                 <ul class="list-unstyled">
-                                    <li>9.99 Dollars</li>
-                                    <li>For Coffee</li>
+                                    <img src="img/task&report.png" alt="quiz" style="width: 150px; height: 150px;">
                                 </ul>
-                                <a href="#" class="btn btn-primary">Donate</a>
+                                <a href="/dashboard" class="btn btn-primary">Click Here</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <div class="card-header">
-                                <h4>Crazy Rich</h4>
+                                <h4>Download Your Data</h4>
                             </div>
                             <div class="card-body">
-                                <h1 class="card-title">$19.99</h1>
                                 <ul class="list-unstyled">
-                                    <li>19.99 Dollars</li>
-                                    <li>For Charty</li>
+                                    <img src="img/th (14).jpg" alt="quiz" style="width: 150px; height: 150px;">
                                 </ul>
-                                <a href="#" class="btn btn-primary">Donate</a>
+                                <a href="{{ auth()->check() ? route('profile', ['id' => auth()->user()->id]) : route('login-notice') }}"
+                                    class="btn btn-primary">
+                                    Click Here
+                                </a>
                             </div>
                         </div>
                     </div>

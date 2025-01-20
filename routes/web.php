@@ -32,9 +32,12 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/games', [GamesController::class, 'index']);
 Route::resource('/profile', ProfileController::class)->middleware('auth');
-Route::get('/profile/{id}', [ProfileController::class, 'index'])->middleware('auth');
+Route::get('/profile/{id}', [ProfileController::class, 'index'])->middleware('auth')->name('profile');
 Route::get('/quiz', [QuizController::class, 'index'])->middleware('auth');;
 Route::get('/questions', [QuestionController::class, 'showQuiz'])->middleware('auth');;
 Route::post('/submit-quiz', [QuizController::class, 'submitQuiz']);
 Route::post('/reviews', [ReviewController::class, 'store'])->name('review.store');
 Route::get('/admin/reviews', [ReviewController::class, 'index'])->name('reviews.index')->middleware('auth');
+Route::get('/login-notice', function () {
+    return redirect()->back()->with('error', 'Anda harus membuat akun atau login terlebih dahulu.');
+})->name('login-notice');

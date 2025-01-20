@@ -1,5 +1,5 @@
 .hero-section {
-    background: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbG5uazFzODc3YWR3dTBwdzFnN29lMmZwd21ubjhqbmxkbXE3c3J6biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xTiTnxpQ3ghPiB2Hp6/giphy.webp') no-repeat center center;
+    background: url('https://i0.wp.com/jefferlyhelian.com/wp-content/uploads/2019/04/membuat-youtube-channel-art.jpg?fit=5562%2C3708&ssl=1') no-repeat center center;
     background-size: cover;
     height: 100vh;
     color: white;
@@ -7,6 +7,8 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: white;
+     /* Border putih untuk pembatas */
 }
 
 .welcome {
@@ -31,25 +33,35 @@
     color: white;
     margin: 0;
     padding: 50px 0;
+    border-top: 5px solid #fff; /* Border putih di atas untuk pembatas */
+     /* Border putih di atas untuk pembatas */
 }
 
+
+
+
 .donation {
-    background: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXg0cTlnencwcGw2bWhqdDBxbnF3dzVmdjMzdHV0cjRza3N0OXlkayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fyLbfJBuSQYIgaBSyd/giphy.webp');
+    background: url('https://tse2.mm.bing.net/th?id=OIP.eEhZ4Z40X1p65wKVqelxsgHaEK&pid=Api&P=0&h=220') no-repeat center center;
     background-size: cover;
     margin: 0;
     padding: 0;
     overflow: hidden;
     color: white;
+    border-top: 5px solid #fff; /* Border putih untuk pembatas */
+     /* Border putih untuk pembatas */
 }
 
 .contact {
-    background: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXA2bGR0czJ1bnA0d3RsczVoZnJmbWtvaWVscDdybzdwdG1wdGdyZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nrKghLViLfeUXxMVkb/giphy.webp') no-repeat center center;
+    background: url('https://tse1.mm.bing.net/th?id=OIP.ntrwHQ-ttydT_3nufrVn1QHaDb&pid=Api&P=0&h=220') no-repeat center center;
     background-size: cover;
     margin: 0;
     padding: 0;
     color: white;
     overflow: hidden;
+    border-top: 5px solid #fff; /* Border putih di atas untuk pembatas */
 }
+
+
 
 .footer {
     background-color: #333;
