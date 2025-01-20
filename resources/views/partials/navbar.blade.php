@@ -103,7 +103,11 @@
                                 aria-expanded="false">Action</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/profile">Profile</a></li>
-                                <li><a class="dropdown-item" href="/admin/reviews">Review</a></li>
+                                    <li>
+                                        @if (auth()->check() && auth()->user()->type === 1)
+                                            <a class="dropdown-item" href="/admin/reviews">Review</a>
+                                        @endif
+                                    </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

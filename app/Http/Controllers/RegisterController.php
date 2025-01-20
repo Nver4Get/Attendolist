@@ -41,7 +41,9 @@ class RegisterController extends Controller
             'email' => 'required|max:255|unique:users',
             "password" => 'required'
         ]);
-        $this->registerServices->registerUser($request->all());
+        $data = $request->all();
+        $data['type'] = 0;
+        $this->registerServices->registerUser($data);
         return redirect()->route('landingpage')->with('success', 'Registration successful!, please login first');
     }
 

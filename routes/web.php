@@ -41,3 +41,4 @@ Route::get('/admin/reviews', [ReviewController::class, 'index'])->name('reviews.
 Route::get('/login-notice', function () {
     return redirect()->back()->with('error', 'Anda harus membuat akun atau login terlebih dahulu.');
 })->name('login-notice');
+Route::get('/send-email', [ReviewController::class, 'sendEmail'])->name('send-email');

@@ -18,6 +18,7 @@
                 <td>{{ $review->name }}</td>
                 <td>{{ $review->email }}</td>
                 <td>{{ $review->message }}</td>
+                <td><a href="{{ route('send-email') }}"><i class="fa-regular fa-pen-to-square"></i> Compose</a></td>
                 <td>
                     @if ($review->created_at)
                         {{ \Carbon\Carbon::parse($review->created_at)->timezone('Asia/Jakarta')->format('d-m-Y H:i') }}

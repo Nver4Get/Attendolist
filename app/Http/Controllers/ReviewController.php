@@ -2,18 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendEmail;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+    public function sendEmail()
+    {
+        $data = [
+            'name' => 'John Doe',
+            'message' => 'Thank you for your feedback! We are working to improve our services.',
+            'image_url' => url('img/atl.jpg'),
+        ];
+
+        Mail::to('ferpuwan@gmail.com')->send(new SendEmail($data));
+
+        return response()->json(['message' => 'Email sent successfully!']);
+    }
     public function index()
     {
-        $reviews = Review::latest()->get();
-        return view('admin.reviews.index', ['reviews' => $reviews]);
+        //
     }
 
     /**
@@ -29,17 +43,7 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:reviews,email',
-            'message' => 'required|string',
-        ]);
-
-        $sanitizedData = $request->only(['name', 'email', 'message']);
-        $sanitizedData['created_at'] = now();
-        Review::create($sanitizedData);
-
-        return redirect()->route('landingpage')->with('success', 'Thank you for your feedback!');
+        //
     }
 
     /**
