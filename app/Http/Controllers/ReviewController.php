@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Mail\SendEmail;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class ReviewController extends Controller
@@ -13,21 +15,31 @@ class ReviewController extends Controller
      * Display a listing of the resource.
      */
 
-    public function sendEmail()
+    public function sendEmail(Request $request)
     {
-        $data = [
-            'name' => 'John Doe',
-            'message' => 'Thank you for your feedback! We are working to improve our services.',
-            'image_url' => url('img/atl.jpg'),
-        ];
+        $email = $request->query('email');
 
-        Mail::to('ferpuwan@gmail.com')->send(new SendEmail($data));
+        Log::info('Email yang diterima: ' . $email);
 
-        return response()->json(['message' => 'Email sent successfully!']);
+        $user = User::whereRaw('LOWER(email) = ?', [strtolower($email)])->first();
+
+
+        if ($user) {
+            $data = [
+                'name' => $user->name, // Ambil nama asli pengguna
+            ];
+    
+            Mail::to($email)->send(new SendEmail($data));
+    
+            return redirect()->route('admin.reviews.index')->with('success',  'Email has been sent to ' . $email);
+        }
+    
+        return redirect()->back()->with('error', 'User not found.');
     }
     public function index()
     {
-        //
+        $reviews = Review::all();
+        return view('admin.reviews.index', ['reviews' => $reviews]);
     }
 
     /**
@@ -43,7 +55,19 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'message' => 'required|string'
+        ]);
+
+        Review::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'message' => $request->message
+        ]);
+
+        return redirect()->back()->with('success', 'Thanks for your feedback!');
     }
 
     /**

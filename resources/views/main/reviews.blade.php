@@ -79,6 +79,12 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
+        td a {
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+        }
+
         footer {
             margin-top: 10px;
             text-align: center;
